@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b5dpenco0nwh"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_unpyb"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_unpyb"]
 [ext_resource type="Texture2D" uid="uid://cbfoid3wf67mx" path="res://characters.png" id="2_d2o4b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmoi8"]
