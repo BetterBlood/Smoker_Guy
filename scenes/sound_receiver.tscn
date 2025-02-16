@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://52gbq5fabglk"]
+
+[ext_resource type="Script" path="res://scripts/sound_receiver.gd" id="1_1nnfd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0tgfy"]
+
+[node name="SoundReceiver" type="Node3D"]
+script = ExtResource("1_1nnfd")
+
+[node name="Detector" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4096
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detector"]
+shape = SubResource("SphereShape3D_0tgfy")
+
+[connection signal="area_entered" from="Detector" to="." method="_on_detector_area_entered"]
