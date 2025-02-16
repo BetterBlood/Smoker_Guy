@@ -15,7 +15,7 @@ sky = SubResource("Sky_eajfc")
 tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffdb2"]
-albedo_color = Color(0.0137012, 7.70092e-07, 0.143383, 1)
+albedo_color = Color(0.149005, 0.148389, 0, 1)
 metallic_specular = 0.6
 
 [node name="Main" type="Node"]
@@ -24,9 +24,11 @@ metallic_specular = 0.6
 environment = SubResource("Environment_hdhwh")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.492404, 0.0868241, 0, 0.173648, 0.984808, -0.5, 0.852868, -0.150384, 0, 6.4, 0)
+transform = Transform3D(-0.173758, -0.982412, -0.068377, -0.0241632, -0.0651589, 0.997582, -0.984492, 0.17499, -0.0124162, -10.5655, 6.4, -6.1)
 light_color = Color(0.912836, 0.917934, 0.917935, 1)
 shadow_enabled = true
+shadow_opacity = 0.61
+directional_shadow_mode = 0
 
 [node name="GrayBox" type="Node" parent="."]
 
@@ -41,7 +43,7 @@ operation = 2
 radius = 3.0
 sides = 3
 
-[node name="Floor" type="CSGBox3D" parent="GrayBox"]
+[node name="Floor" type="CSGBox3D" parent="GrayBox" groups=["Floor"]]
 use_collision = true
 size = Vector3(100, 1, 100)
 material = SubResource("StandardMaterial3D_ffdb2")
@@ -52,9 +54,9 @@ use_collision = true
 size = Vector3(1, 14, 54.2)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="GrayBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2, 1.2, 19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2, 6.05, 19.2)
 use_collision = true
-size = Vector3(1, 24.2, 54.2)
+size = Vector3(1, 13.3, 54.2)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="GrayBox/CSGBox3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0500002, 1.65, 17.65)
@@ -67,4 +69,4 @@ use_collision = true
 size = Vector3(14.4, 3.8, 23.4)
 
 [node name="Player" parent="." instance=ExtResource("1_a0t5k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1, 1.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1, 0.68, 0)

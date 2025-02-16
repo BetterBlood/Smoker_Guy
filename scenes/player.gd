@@ -20,19 +20,27 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$ShadowMesh.rotation = Vector3.ZERO
 	handle_move(delta)
 	handle_look()
 
 func handle_move(delta: float):
 	var input := Vector3.ZERO
-	input.x = Input.get_axis("move_left", "move_right");
-	input.z = Input.get_axis("move_forward", "move_back");
+	input.x = Input.get_axis("move_left", "move_right")
+	input.z = Input.get_axis("move_forward", "move_back")
 	
 	apply_central_force(twist_pivot.basis * input * 1200.0 * delta)
 	
+	if (Input.is_action_pressed("jump")):
+		if position.y < 1:
+			apply_central_force(Vector3.UP * 2000 * delta)
+	
 func handle_look():
 	if Input.is_action_just_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	twist_pivot.rotate_y(twist_input)
 	char_mesh.rotate_y(twist_input)
@@ -44,3 +52,9 @@ func handle_look():
 	)
 	twist_input = 0.0
 	pitch_input = 0.0
+
+
+
+#func _on_area_3d_area_entered(area: Area3D) -> void:
+	#if area.is_in_group("floor"):
+		#print("Touching Floor")
