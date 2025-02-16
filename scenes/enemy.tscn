@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3utv1asyo0gj"]
 
-[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_o26gs"]
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_y30oo"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_227hy"]
 
@@ -15,7 +15,7 @@ material = SubResource("StandardMaterial3D_1k51d")
 size = Vector3(0.9, 1.9, 0.9)
 
 [node name="Enemy" type="CharacterBody3D"]
-script = ExtResource("1_o26gs")
+script = ExtResource("1_y30oo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_227hy")
