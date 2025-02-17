@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1w0wviwdsrv2"]
+
+[ext_resource type="Script" path="res://scripts/Interactions/interactions_manager.gd" id="1_i14k0"]
+
+[sub_resource type="Theme" id="Theme_mjppf"]
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+
+[node name="InteractionsManager" type="Node3D"]
+script = ExtResource("1_i14k0")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = SubResource("Theme_mjppf")
+text = "[F] INTERACT"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6bkqjtbsmj8k"]
+
+[ext_resource type="Script" path="res://scripts/Interactions/interactions_detector.gd" id="1_jtgn2"]
+
+[node name="InteractionsDetector" type="Area3D"]
+script = ExtResource("1_jtgn2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

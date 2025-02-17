@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7whgqwiiu1e1"]
+
+[ext_resource type="Script" path="res://scripts/Interactions/interaction_static.gd" id="1_vhkxg"]
+[ext_resource type="PackedScene" uid="uid://b6bkqjtbsmj8k" path="res://scenes/Interactions/interactions_detector.tscn" id="2_axgu7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tfual"]
+radius = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djr5b"]
+albedo_color = Color(1, 0.258824, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xdij6"]
+material = SubResource("StandardMaterial3D_djr5b")
+radius = 0.2
+height = 0.4
+
+[node name="InteractionStatic" type="Node3D"]
+script = ExtResource("1_vhkxg")
+interactionToDisplay = "default (insp)"
+
+[node name="InteractionsDetector" parent="." instance=ExtResource("2_axgu7")]
+collision_layer = 0
+collision_mask = 8192
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionsDetector"]
+shape = SubResource("SphereShape3D_tfual")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_xdij6")

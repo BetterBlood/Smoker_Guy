@@ -21,6 +21,7 @@ height = 0.01
 rings = 1
 
 [node name="Player" type="RigidBody3D" groups=["Player"]]
+collision_layer = 8193
 lock_rotation = true
 linear_damp = 2.0
 script = ExtResource("1_unpyb")
