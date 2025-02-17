@@ -24,6 +24,8 @@ func _physics_process(delta):
 	else:
 		target = Vector3(player.position.x, position.y, player.position.z)
 		look_at(target, Vector3.UP)
+	
+	move_and_slide()
 
 func can_see_player() -> bool:
 	for child in $Rays.get_children():
