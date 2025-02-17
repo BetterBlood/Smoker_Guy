@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://5plss6o37j1h"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dto4e"]
+size = Vector3(10, 10, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8kow0"]
+size = Vector3(10, 10, 0.2)
+
+[node name="Cage_wall" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_dto4e")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_8kow0")

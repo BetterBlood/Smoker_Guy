@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcgpxw011u3nx"]
+
+[ext_resource type="PackedScene" uid="uid://52gbq5fabglk" path="res://scenes/sound_receiver.tscn" id="1_i7v6n"]
+[ext_resource type="Script" path="res://scripts/static_receiver.gd" id="1_mspoq"]
+
+[node name="Static receiver" type="Node3D"]
+script = ExtResource("1_mspoq")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+
+[node name="SoundReceiver" parent="." instance=ExtResource("1_i7v6n")]
+
+[connection signal="sound_detected" from="SoundReceiver" to="." method="_on_sound_receiver_sound_detected"]

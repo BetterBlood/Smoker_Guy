@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c0c28i2b8kosw"]
 
 [ext_resource type="PackedScene" uid="uid://5plss6o37j1h" path="res://scenes/cage_wall.tscn" id="1_oe34d"]
-[ext_resource type="PackedScene" uid="uid://52gbq5fabglk" path="res://scenes/sound_receiver.tscn" id="2_nc0qn"]
 [ext_resource type="PackedScene" uid="uid://dstcfduqqsj3a" path="res://scenes/Tests/moveable_entity.tscn" id="3_h7o6i"]
+[ext_resource type="PackedScene" uid="uid://bcgpxw011u3nx" path="res://scenes/static_receiver.tscn" id="3_pxi4u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j4anj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -31,7 +31,11 @@ transform = Transform3D(1, 0, 0, 0, 0.947255, 0.320481, 0, -0.320481, 0.947255, 
 [node name="Cage_wall" parent="." instance=ExtResource("1_oe34d")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
-[node name="SoundReceiver" parent="." instance=ExtResource("2_nc0qn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9027, 1.92362, 0)
-
 [node name="MoveableEntity" parent="." instance=ExtResource("3_h7o6i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58173, 0)
+
+[node name="Static receiver" parent="." instance=ExtResource("3_pxi4u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09941, 1.06992, -2.7304)
+
+[node name="Cage_wall2" parent="." instance=ExtResource("1_oe34d")]
+transform = Transform3D(-0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, -0.173648, 0, 0, -5)
