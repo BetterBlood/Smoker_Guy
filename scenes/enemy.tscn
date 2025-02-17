@@ -22,10 +22,10 @@ albedo_color = Color(0, 0, 0, 0.321569)
 transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 0, 0, 0)
 script = ExtResource("1_y30oo")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Body" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_227hy")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="Glasses" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.8, 0, 0, 0, 0.3, 0, 0, 0, 0.525, 0, 0.54, -0.34)
 mesh = SubResource("BoxMesh_wj44l")
 
@@ -82,20 +82,20 @@ debug_shape_thickness = 5
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+[node name="VisionCone" type="CSGCylinder3D" parent="."]
 transform = Transform3D(0.99794, 0, 0, 0, -1.19724e-07, -0.99794, 0, 2.73897, -4.36214e-08, -0.00223696, 0.419316, -3.26987)
 radius = 5.0
 sides = 32
 cone = true
 material = SubResource("StandardMaterial3D_jvdhn")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCylinder3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="VisionCone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.232647, -0.0884403, -8.9407e-08)
 operation = 1
 size = Vector3(8.92371, 1.91296, 1)
 material = SubResource("StandardMaterial3D_jvdhn")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCylinder3D"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="VisionCone"]
 transform = Transform3D(1.07206, 0, 0, 0, -1.70739e-08, 0.390605, 0, -1.07206, -4.68614e-08, 0, 0.472168, 0.44623)
 operation = 1
 radius = 3.6789

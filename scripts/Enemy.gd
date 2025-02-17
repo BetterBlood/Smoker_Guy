@@ -25,22 +25,20 @@ func _physics_process(delta):
 		target = Vector3(player.position.x, position.y, player.position.z)
 		look_at(target, Vector3.UP)
 
-
 func can_see_player() -> bool:
 	for child in $Rays.get_children():
-		if child is RayCast3D:
-			# Ensure the raycast is active.
-			if child.is_enabled() and child.is_colliding():
-				var collider = child.get_collider()
-				 # Check by comparing against the player’s group or name
-				if collider and collider.is_in_group("Player"):
-					set_alerted()
-					return true
+		if child.is_colliding():
+			var collider = child.get_collider()
+			 # Check by comparing against the player’s group or name
+			if collider and collider.is_in_group("Player"):
+				set_alerted()
+				return true
 	return false
 
 func set_alerted():
 	speed += 2
+	$VisionCone.queue_free()
 	var mat = StandardMaterial3D.new()
 	mat.albedo_color = Color.RED
-	$MeshInstance3D.set_surface_override_material(0, mat)
+	$Body.set_surface_override_material(0, mat)
 	
