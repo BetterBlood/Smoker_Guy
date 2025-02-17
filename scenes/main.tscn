@@ -72,7 +72,8 @@ size = Vector3(14.4, 0.7, 23.4)
 [node name="Player" parent="." instance=ExtResource("1_sa3da")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1, 0.68, 0)
 
-[node name="Enemy" parent="." instance=ExtResource("2_jc17c")]
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_jc17c")]
 transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -10.6219, 1.18901, 0)
 point_a = Vector3(-10.622, 1.189, 10)
 point_b = Vector3(-10.622, 1.189, -10)
+player = NodePath("../Player")

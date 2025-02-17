@@ -83,7 +83,7 @@ debug_shape_thickness = 5
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-transform = Transform3D(0.99794, 0, 0, 0, -1.19724e-07, -0.99794, 0, 2.73897, -4.36214e-08, 0, 0.445311, -3.26311)
+transform = Transform3D(0.99794, 0, 0, 0, -1.19724e-07, -0.99794, 0, 2.73897, -4.36214e-08, -0.00223696, 0.419316, -3.26987)
 radius = 5.0
 sides = 32
 cone = true
