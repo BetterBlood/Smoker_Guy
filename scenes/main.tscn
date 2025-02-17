@@ -19,13 +19,13 @@ tonemap_mode = 2
 albedo_color = Color(0.149005, 0.148389, 0, 1)
 metallic_specular = 0.6
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hdhwh")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.173758, -0.982412, -0.068377, -0.0241632, -0.0651589, 0.997582, -0.984492, 0.17499, -0.0124162, -10.5655, 6.4, -6.1)
+transform = Transform3D(-0.173758, -0.982412, -0.0683767, -0.0241632, -0.0651589, 0.997582, -0.984492, 0.17499, -0.0124163, -10.5655, 6.4, -6.1)
 light_color = Color(0.912836, 0.917934, 0.917935, 1)
 shadow_enabled = true
 shadow_opacity = 0.61

@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3utv1asyo0gj"]
+[gd_scene load_steps=8 format=3 uid="uid://b3utv1asyo0gj"]
 
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_y30oo"]
+[ext_resource type="PackedScene" uid="uid://52gbq5fabglk" path="res://scenes/sound_receiver.tscn" id="2_m7243"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_227hy"]
 
@@ -102,3 +103,11 @@ radius = 3.6789
 radial_segments = 24
 rings = 12
 material = SubResource("StandardMaterial3D_jvdhn")
+
+[node name="Ear" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.568207, 0)
+
+[node name="SoundReceiver" parent="Ear" instance=ExtResource("2_m7243")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.568207, 0)
+
+[connection signal="sound_detected" from="Ear/SoundReceiver" to="." method="_on_sound_receiver_sound_detected"]

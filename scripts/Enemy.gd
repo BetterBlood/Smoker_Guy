@@ -10,6 +10,8 @@ var target: Vector3
 #@onready var point_b := Vector3($PatrolPoints/B.position.x, position.y, $PatrolPoints/B.position.z)
 var current_patrol_index := 0
 
+@onready var ear: Marker3D = $Ear
+
 	
 func _ready():
 	if patrol_points.size() > 0:
@@ -59,3 +61,17 @@ func set_alerted():
 	mat.albedo_color = Color.RED
 	$Body.set_surface_override_material(0, mat)
 	
+
+
+func _on_sound_receiver_sound_detected(other_position: Vector3) -> void:
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(ear.global_position, other_position)
+	var result = space_state.intersect_ray(query)
+	#print(result)
+	#print("sound detected at: ", ear.global_position, ", from: ", other_position)
+	if not result.is_empty() && result["collider"] is StaticBody3D:
+		print("obstructed -> ignored") # TODO: verify all obstruction mat are working
+	else:
+		if !alerted:
+			alerted = true
+			set_alerted()
