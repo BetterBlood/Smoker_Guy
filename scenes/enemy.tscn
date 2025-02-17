@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3utv1asyo0gj"]
+
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_y30oo"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_227hy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1k51d"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_wj44l"]
+material = SubResource("StandardMaterial3D_1k51d")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_baocp"]
+size = Vector3(0.9, 1.9, 0.9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvdhn"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.321569)
+
+[node name="Enemy" type="CharacterBody3D"]
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 0, 0, 0)
+script = ExtResource("1_y30oo")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_227hy")
+
+[node name="Glasses" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.3, 0, 0, 0, 0.525, 0, 0.54, -0.34)
+mesh = SubResource("BoxMesh_wj44l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_baocp")
+
+[node name="Rays" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.847724, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Rays"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.7)
+target_position = Vector3(0, 0, -5)
+debug_shape_thickness = 5
+
+[node name="RayCast3D2" type="RayCast3D" parent="Rays"]
+transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 0, 0.5, -0.7)
+target_position = Vector3(0, 0, -5)
+debug_shape_thickness = 5
+
+[node name="RayCast3D3" type="RayCast3D" parent="Rays"]
+transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 0, 0.5, -0.7)
+target_position = Vector3(0, 0, -5)
+debug_shape_thickness = 5
+
+[node name="RayCast3D4" type="RayCast3D" parent="Rays"]
+transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 0, 0.5, -0.7)
+target_position = Vector3(0, 0, -5)
+debug_shape_thickness = 5
+
+[node name="RayCast3D5" type="RayCast3D" parent="Rays"]
+transform = Transform3D(0.939692, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939692, 0, 0.5, -0.7)
+target_position = Vector3(0, 0, -5)
+debug_shape_thickness = 5
+
+[node name="RayCast3D6" type="RayCast3D" parent="Rays"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 0.5, -0.7)
+target_position = Vector3(0, 0, -5)
+debug_shape_thickness = 5
+
+[node name="RayCast3D7" type="RayCast3D" parent="Rays"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0.5, -0.7)
+target_position = Vector3(0, 0, -5)
+debug_shape_thickness = 5
+
+[node name="RayCast3D8" type="RayCast3D" parent="Rays"]
+transform = Transform3D(0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, 0, 0.5, -0.7)
+target_position = Vector3(0, 0, -5)
+debug_shape_thickness = 5
+
+[node name="RayCast3D9" type="RayCast3D" parent="Rays"]
+transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 0, 0.5, -0.7)
+target_position = Vector3(0, 0, -5)
+debug_shape_thickness = 5
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+
+[node name="VisionCone" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.99794, 0, 0, 0, -1.19724e-07, -0.99794, 0, 2.73897, -4.36214e-08, -0.00223696, 0.419316, -3.26987)
+radius = 5.0
+sides = 32
+cone = true
+material = SubResource("StandardMaterial3D_jvdhn")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="VisionCone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.232647, -0.0884403, -8.9407e-08)
+operation = 1
+size = Vector3(8.92371, 1.91296, 1)
+material = SubResource("StandardMaterial3D_jvdhn")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="VisionCone"]
+transform = Transform3D(1.07206, 0, 0, 0, -1.70739e-08, 0.390605, 0, -1.07206, -4.68614e-08, 0, 0.472168, 0.44623)
+operation = 1
+radius = 3.6789
+radial_segments = 24
+rings = 12
+material = SubResource("StandardMaterial3D_jvdhn")

@@ -1,25 +1,102 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvmxwqk61tto4"]
+[gd_scene load_steps=7 format=3 uid="uid://cvmxwqk61tto4"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4rrdc"]
+[ext_resource type="PackedScene" uid="uid://b5dpenco0nwh" path="res://scenes/player.tscn" id="1_sa3da"]
+[ext_resource type="PackedScene" uid="uid://b3utv1asyo0gj" path="res://scenes/enemy.tscn" id="2_jc17c"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mnmpc"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_557ip"]
-sky_material = SubResource("ProceduralSkyMaterial_4rrdc")
+[sub_resource type="Sky" id="Sky_eajfc"]
+sky_material = SubResource("ProceduralSkyMaterial_mnmpc")
 
-[sub_resource type="Environment" id="Environment_rqp4t"]
+[sub_resource type="Environment" id="Environment_hdhwh"]
 background_mode = 2
-sky = SubResource("Sky_557ip")
+sky = SubResource("Sky_eajfc")
 tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffdb2"]
+albedo_color = Color(0.149005, 0.148389, 0, 1)
+metallic_specular = 0.6
 
 [node name="Main" type="Node"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_rqp4t")
+environment = SubResource("Environment_hdhwh")
 
-[node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.849294, 0.52792, 0, -0.52792, 0.849294, 0, 7.83304, 12.7934)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.173758, -0.982412, -0.068377, -0.0241632, -0.0651589, 0.997582, -0.984492, 0.17499, -0.0124162, -10.5655, 6.4, -6.1)
+light_color = Color(0.912836, 0.917934, 0.917935, 1)
+shadow_enabled = true
+shadow_opacity = 0.61
+directional_shadow_mode = 0
+
+[node name="GrayBox" type="Node" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="GrayBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6, 8.5, -14.7)
+use_collision = true
+size = Vector3(16.8, 18, 2.2)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="GrayBox/CSGBox3D"]
+transform = Transform3D(1.9, 0, 0, 0, -1.18021e-07, 4.8, 0, -2.7, -2.09815e-07, 0, -6.9, 3.01609e-07)
+operation = 2
+radius = 3.0
+sides = 3
+
+[node name="Floor" type="CSGBox3D" parent="GrayBox" groups=["Floor"]]
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_ffdb2")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="GrayBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2, 7.4, 19)
+use_collision = true
+size = Vector3(1, 14, 54.2)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="GrayBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2, 6.05, 19.2)
+use_collision = true
+size = Vector3(1, 13.3, 54.2)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="GrayBox/CSGBox3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0500002, 1.65, 17.65)
+operation = 2
+size = Vector3(2.1, 4.9, 4.5)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="GrayBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.75, 0.3)
+use_collision = true
+size = Vector3(14.4, 0.7, 23.4)
+
+[node name="Player" parent="." instance=ExtResource("1_sa3da")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.200001, 2.08, 0)
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_jc17c")]
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -10.6219, 1.18901, 0)
+speed = 5.0
+player = NodePath("../Player")
+
+[node name="PatrolPoints" type="Node" parent="Enemy"]
+
+[node name="A" type="Node3D" parent="Enemy/PatrolPoints"]
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -10.9033, 1.18901, 12.6235)
+
+[node name="B" type="Node3D" parent="Enemy/PatrolPoints"]
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -11.3253, 1.18901, -11.1384)
+
+[node name="Enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_jc17c")]
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -22.1583, 1.18901, 14.3314)
+speed = 5.0
+player = NodePath("../Player")
+
+[node name="PatrolPoints" type="Node" parent="Enemy2"]
+
+[node name="A" type="Node3D" parent="Enemy2/PatrolPoints"]
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -19.2038, 1.18901, 21.9797)
+
+[node name="B" type="Node3D" parent="Enemy2/PatrolPoints"]
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -24.3389, 1.18901, -8.39092)
+
+[node name="B2" type="Node3D" parent="Enemy2/PatrolPoints"]
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -37.4932, 1.18901, 5.64345)
