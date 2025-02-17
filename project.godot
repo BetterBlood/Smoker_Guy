@@ -22,6 +22,7 @@ project/assembly_name="Smoker Guy"
 [global_group]
 
 Floor=""
+Player=""
 
 [input]
 
