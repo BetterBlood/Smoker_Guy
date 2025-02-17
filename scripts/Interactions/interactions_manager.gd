@@ -41,7 +41,6 @@ func _input(event: InputEvent) -> void:
 
 func _setActiveLabel(currArea: InteractionsDetector):
 	label.text = beginText + currArea.actionName
-	var tmp: Vector2 = Vector2(currArea.global_position.x, currArea.global_position.y)
 	label.global_position = get_window().size/2
 	label.global_position.y += 50
 	label.global_position.x -= label.size.x / 2
