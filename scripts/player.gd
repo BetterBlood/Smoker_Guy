@@ -23,7 +23,10 @@ func _process(delta: float) -> void:
 	$ShadowMesh.rotation = Vector3.ZERO
 	handle_move(delta)
 	handle_look()
-
+	
+func is_grounded() -> bool:
+	return $GroundDetector.is_colliding()
+	
 func handle_move(delta: float):
 	var input := Vector3.ZERO
 	input.x = Input.get_axis("move_left", "move_right")
@@ -32,8 +35,8 @@ func handle_move(delta: float):
 	apply_central_force(twist_pivot.basis * input * 1200.0 * delta)
 	
 	if (Input.is_action_pressed("jump")):
-		if position.y < 1:
-			apply_central_force(Vector3.UP * 2000 * delta)
+		if is_grounded():
+			apply_central_force(Vector3.UP * 10000 * delta)
 	
 func handle_look():
 	if Input.is_action_just_pressed("ui_cancel"):
