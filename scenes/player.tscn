@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b5dpenco0nwh"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_unpyb"]
-[ext_resource type="Texture2D" uid="uid://clx83dlfkocev" path="res://assets/kid.png" id="2_ikrn2"]
+[ext_resource type="Texture2D" uid="uid://c4ygc5mov51fh" path="res://assets/kid.png" id="2_ikrn2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmoi8"]
 transparency = 1

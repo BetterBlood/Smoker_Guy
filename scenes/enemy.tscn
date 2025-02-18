@@ -1,25 +1,41 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3utv1asyo0gj"]
+[gd_scene load_steps=8 format=3 uid="uid://b3utv1asyo0gj"]
 
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_y30oo"]
-[ext_resource type="Texture2D" uid="uid://u3ywgx7npqxm" path="res://assets/alert_guard.png" id="2_4h5hk"]
+[ext_resource type="Texture2D" uid="uid://bkyp2adksc6hs" path="res://assets/alert_guard.png" id="2_4h5hk"]
 [ext_resource type="PackedScene" uid="uid://52gbq5fabglk" path="res://scenes/sound_receiver.tscn" id="2_m7243"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_baocp"]
-size = Vector3(0.9, 1.9, 0.9)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nv0wf"]
+height = 2.01855
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvdhn"]
 transparency = 1
 albedo_color = Color(0, 0, 0, 0.321569)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxix1"]
+atlas = ExtResource("2_4h5hk")
+region = Rect2(0, 0, 395, 559)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_inu78"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxix1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Enemy" type="CharacterBody3D"]
 transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 0, 0, 0)
 script = ExtResource("1_y30oo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_baocp")
+transform = Transform3D(1.6355, 0, 0, 0, 2.13683, 0, 0, 0, 1.50704, 0, 2.1, 0)
+shape = SubResource("CapsuleShape3D_nv0wf")
 
 [node name="Rays" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.847724, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00349449, -0.303643, 0.00045914)
 
 [node name="RayCast3D" type="RayCast3D" parent="Rays"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.7)
@@ -66,10 +82,8 @@ transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 
 target_position = Vector3(0, 0, -5)
 debug_shape_thickness = 5
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-
 [node name="VisionCone" type="CSGCylinder3D" parent="."]
-transform = Transform3D(0.99794, 0, 0, 0, -1.19724e-07, -0.99794, 0, 2.73897, -4.36214e-08, -0.00223696, 0.419316, -3.26987)
+transform = Transform3D(0.99794, 0, 0, 0, -1.19724e-07, -0.99794, 0, 2.73897, -4.36214e-08, -0.00223696, 0.823229, -3.26987)
 radius = 5.0
 sides = 32
 cone = true
@@ -90,14 +104,14 @@ rings = 12
 material = SubResource("StandardMaterial3D_jvdhn")
 
 [node name="Ear" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.568207, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24539, 0)
 
 [node name="SoundReceiver" parent="Ear" instance=ExtResource("2_m7243")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.568207, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="Body" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58702, 1.89296, 0)
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, 0)
 billboard = 1
-texture = ExtResource("2_4h5hk")
+sprite_frames = SubResource("SpriteFrames_inu78")
 
 [connection signal="sound_detected" from="Ear/SoundReceiver" to="." method="_on_sound_receiver_sound_detected"]
