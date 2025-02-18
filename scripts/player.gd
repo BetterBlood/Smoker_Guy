@@ -7,7 +7,8 @@ var pitch_input := 0.0
 @onready var char_mesh := $MeshInstance3D
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot = $TwistPivot/PitchPivot
-@onready var foot_step: AudioStreamPlayer3D = $FootStep
+@onready var foot_step: AudioStreamPlayer3D = $Audios/FootStep
+@onready var jump: AudioStreamPlayer3D = $Audios/Jump
 
 const sound_emitter = preload("res://scenes/sound_emitter.tscn")
 var val = 0
@@ -45,24 +46,27 @@ func handle_move(delta: float):
 	if val > 0.5 && not input.is_zero_approx():
 		#if crouching:
 			#sound_mult = crouch_mult
-		foot_step.play()
-		val = 0
-		var sound_prop = sound_emitter.instantiate()
-		sound_prop.setStrengh(walk_sound_strength * sound_mult)
-		sound_prop.position = position
-		world.add_child(sound_prop)
-		
-		sound_mult = 1
+		if is_grounded():
+			foot_step.play()
+			val = 0
+			var sound_prop = sound_emitter.instantiate()
+			sound_prop.setStrengh(walk_sound_strength * sound_mult)
+			sound_prop.position = position
+			world.add_child(sound_prop)
+			
+			sound_mult = 1
 	
 	apply_central_force(twist_pivot.basis * input * 1200.0 * delta)
 	
 	if (Input.is_action_pressed("jump")):
 		if is_grounded():
 			apply_central_force(Vector3.UP * 10000 * delta)
-			var sound_prop = sound_emitter.instantiate()
-			sound_prop.setStrengh(jump_sound_strength)
-			sound_prop.position = position
-			world.add_child(sound_prop)
+			if not jump.playing:
+				jump.play()
+				var sound_prop = sound_emitter.instantiate()
+				sound_prop.setStrengh(jump_sound_strength)
+				sound_prop.position = position
+				world.add_child(sound_prop)
 	
 func handle_look():
 	if Input.is_action_just_pressed("ui_cancel"):

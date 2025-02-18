@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5dpenco0nwh"]
+[gd_scene load_steps=9 format=3 uid="uid://b5dpenco0nwh"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_unpyb"]
 [ext_resource type="Texture2D" uid="uid://c4ygc5mov51fh" path="res://assets/kid.png" id="2_ikrn2"]
 [ext_resource type="AudioStream" uid="uid://ydbn7vt6sck1" path="res://assets/sounds/sfx/footsteps/footsteps 1.1.ogg" id="3_kyaws"]
+[ext_resource type="AudioStream" uid="uid://cpprnj4an6tlx" path="res://assets/sounds/sfx/jumps/jump.ogg" id="4_i6en7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmoi8"]
 transparency = 1
@@ -54,6 +55,13 @@ mesh = SubResource("CylinderMesh_tcg3x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 target_position = Vector3(0, -0.1, 0)
 
-[node name="FootStep" type="AudioStreamPlayer3D" parent="."]
+[node name="Audios" type="Node3D" parent="."]
+
+[node name="FootStep" type="AudioStreamPlayer3D" parent="Audios"]
 stream = ExtResource("3_kyaws")
+bus = &"SFX"
+
+[node name="Jump" type="AudioStreamPlayer3D" parent="Audios"]
+stream = ExtResource("4_i6en7")
+volume_db = -20.0
 bus = &"SFX"
