@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwqg2nn4328dy"]
+
+[ext_resource type="Script" path="res://scripts/Interactions/healing_object.gd" id="1_wqupq"]
+[ext_resource type="PackedScene" uid="uid://b6bkqjtbsmj8k" path="res://scenes/Interactions/interactions_detector.tscn" id="2_4chwm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4xi8t"]
+radius = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dt3jx"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_sftkr"]
+material = SubResource("StandardMaterial3D_dt3jx")
+radius = 0.2
+height = 0.4
+
+[node name="HealingObject" type="Node3D"]
+script = ExtResource("1_wqupq")
+
+[node name="InteractionsDetector" parent="." instance=ExtResource("2_4chwm")]
+collision_layer = 0
+collision_mask = 8192
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionsDetector"]
+shape = SubResource("SphereShape3D_4xi8t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_sftkr")

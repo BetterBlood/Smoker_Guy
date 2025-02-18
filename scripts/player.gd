@@ -85,3 +85,6 @@ func handle_look():
 #func _on_area_3d_area_entered(area: Area3D) -> void:
 	#if area.is_in_group("floor"):
 		#print("Touching Floor")
+
+func call_heal(amount: int) -> void:
+	print("TODO: handle heal on player")
