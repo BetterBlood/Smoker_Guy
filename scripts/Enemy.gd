@@ -60,7 +60,6 @@ func set_alerted():
 	var mat = StandardMaterial3D.new()
 	mat.albedo_color = Color.RED
 	$Body.set_surface_override_material(0, mat)
-	
 
 
 func _on_sound_receiver_sound_detected(other_position: Vector3) -> void:

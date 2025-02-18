@@ -10,8 +10,8 @@ var pitch_input := 0.0
 
 const sound_emitter = preload("res://scenes/sound_emitter.tscn")
 var val = 0
-const walk_sound_strength = 15
-const jump_sound_strength = 80
+const walk_sound_strength = 10
+const jump_sound_strength = 30
 const crouch_mult = 0.3
 var sound_mult = 1
 @onready var world: Node3D = $".."
