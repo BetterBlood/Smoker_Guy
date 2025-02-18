@@ -11,6 +11,10 @@ var target: Vector3
 var current_patrol_index := 0
 
 @onready var ear: Marker3D = $Ear
+@onready var detect_player_1: AudioStreamPlayer3D = $Audios/DetectPlayer/DetectPlayer1
+@onready var catch_player_1: AudioStreamPlayer3D = $Audios/CatchPlayer/CatchPlayer1
+@onready var reach_patrol_point: AudioStreamPlayer3D = $Audios/ReachPatrolPoint/ReachPatrolPoint
+
 
 	
 func _ready():
@@ -25,6 +29,7 @@ func get_patrol_point_position(index: int) -> Vector3:
 	return Vector3(patrol_point.position.x, position.y, patrol_point.position.z)
 
 func update_patrol_target():
+	reach_patrol_point.play()
 	current_patrol_index = (current_patrol_index + 1) % patrol_points.size()
 	target = get_patrol_point_position(current_patrol_index)
 
@@ -58,6 +63,7 @@ func can_see_player() -> bool:
 	return false
 
 func set_alerted():
+	detect_player_1.play()
 	speed += 2
 	$VisionCone.queue_free()
 	#var mat = StandardMaterial3D.new()

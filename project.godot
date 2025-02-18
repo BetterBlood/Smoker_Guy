@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+GlobalAudioStreamPlayer="*res://scenes/audio_stream_player.tscn"
 InteractionsManager="*res://scenes/Interactions/interactions_manager.tscn"
 
 [dotnet]
