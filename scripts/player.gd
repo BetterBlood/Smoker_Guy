@@ -7,6 +7,7 @@ var pitch_input := 0.0
 @onready var char_mesh := $MeshInstance3D
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot = $TwistPivot/PitchPivot
+@onready var foot_step: AudioStreamPlayer3D = $FootStep
 
 const sound_emitter = preload("res://scenes/sound_emitter.tscn")
 var val = 0
@@ -44,6 +45,7 @@ func handle_move(delta: float):
 	if val > 0.5 && not input.is_zero_approx():
 		#if crouching:
 			#sound_mult = crouch_mult
+		foot_step.play()
 		val = 0
 		var sound_prop = sound_emitter.instantiate()
 		sound_prop.setStrengh(walk_sound_strength * sound_mult)

@@ -11,6 +11,7 @@ const crouch_mult = 0.3
 var sound_mult = 1
 
 @onready var world: Node3D = $".."
+@onready var foot_step: AudioStreamPlayer3D = $FootStep
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -39,6 +40,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	val += delta
 	if val > 0.5 && not input_dir.is_zero_approx():
+		foot_step.play()
 		#if crouching:
 			#sound_mult = crouch_mult
 		val = 0
