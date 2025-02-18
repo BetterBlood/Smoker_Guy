@@ -31,6 +31,8 @@ func update_patrol_target():
 func _physics_process(delta):
 	# Calculate the direction vector from the enemy to the target
 	var direction = (target - position).normalized()
+	#$Body.look_at(player.global_transform.origin, Vector3.UP)
+	
 	position += direction * speed * delta
 	if (!alerted):
 		look_at(target, Vector3.UP)
@@ -41,6 +43,7 @@ func _physics_process(delta):
 	else:
 		target = Vector3(player.position.x, position.y, player.position.z)
 		look_at(target, Vector3.UP)
+		
 	
 	move_and_slide()
 
@@ -57,9 +60,9 @@ func can_see_player() -> bool:
 func set_alerted():
 	speed += 2
 	$VisionCone.queue_free()
-	var mat = StandardMaterial3D.new()
-	mat.albedo_color = Color.RED
-	$Body.set_surface_override_material(0, mat)
+	#var mat = StandardMaterial3D.new()
+	#mat.albedo_color = Color.RED
+	#$Body.set_surface_override_material(0, mat)
 
 
 func _on_sound_receiver_sound_detected(other_position: Vector3) -> void:

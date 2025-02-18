@@ -21,7 +21,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	time += delta * frequency
-
+	
 	$".".set_position(default_pos + Vector3(0, sin(time) * amplitude, 0))
 
 func _action_on_interact() -> void:

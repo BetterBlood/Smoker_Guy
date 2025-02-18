@@ -1,16 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3utv1asyo0gj"]
+[gd_scene load_steps=6 format=3 uid="uid://b3utv1asyo0gj"]
 
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_y30oo"]
+[ext_resource type="Texture2D" uid="uid://u3ywgx7npqxm" path="res://assets/alert_guard.png" id="2_4h5hk"]
 [ext_resource type="PackedScene" uid="uid://52gbq5fabglk" path="res://scenes/sound_receiver.tscn" id="2_m7243"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_227hy"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1k51d"]
-albedo_color = Color(0, 0, 0, 1)
-metallic_specular = 0.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_wj44l"]
-material = SubResource("StandardMaterial3D_1k51d")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_baocp"]
 size = Vector3(0.9, 1.9, 0.9)
@@ -22,13 +14,6 @@ albedo_color = Color(0, 0, 0, 0.321569)
 [node name="Enemy" type="CharacterBody3D"]
 transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 0, 0, 0)
 script = ExtResource("1_y30oo")
-
-[node name="Body" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_227hy")
-
-[node name="Glasses" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.8, 0, 0, 0, 0.3, 0, 0, 0, 0.525, 0, 0.54, -0.34)
-mesh = SubResource("BoxMesh_wj44l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_baocp")
@@ -109,5 +94,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.568207, 0)
 
 [node name="SoundReceiver" parent="Ear" instance=ExtResource("2_m7243")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.568207, 0)
+
+[node name="Body" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58702, 1.89296, 0)
+billboard = 1
+texture = ExtResource("2_4h5hk")
 
 [connection signal="sound_detected" from="Ear/SoundReceiver" to="." method="_on_sound_receiver_sound_detected"]

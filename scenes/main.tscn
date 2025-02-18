@@ -100,7 +100,7 @@ transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -19.2038
 [node name="B" type="Node3D" parent="Enemy2/PatrolPoints"]
 transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -24.3389, 1.18901, -8.39092)
 
-[node name="B2" type="Node3D" parent="Enemy2/PatrolPoints"]
+[node name="C" type="Node3D" parent="Enemy2/PatrolPoints"]
 transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -37.4932, 1.18901, 5.64345)
 
 [node name="InteractionStatic" parent="." instance=ExtResource("3_7tarn")]
