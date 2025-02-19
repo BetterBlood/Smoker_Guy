@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://sds64ovbu4"]
+
+[ext_resource type="Script" path="res://scripts/options.gd" id="1_gvvfp"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gvvfp")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 533.5
+offset_top = 278.5
+offset_right = 578.5
+offset_bottom = 329.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Back" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="VolumeSlider" type="HSlider" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="Panel/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Panel/VBoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
