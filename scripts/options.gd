@@ -49,16 +49,20 @@ func _on_voice_value_changed(value: float) -> void:
 
 
 func _on_master_drag_ended(value_changed: bool) -> void:
-	ConfigFileHandler.save_audio_volum("Master", $Panel/VBoxContainer/Master.value)
+	if value_changed:
+		ConfigFileHandler.save_audio_volum("Master", $Panel/VBoxContainer/Master.value)
 
 
 func _on_music_slider_drag_ended(value_changed: bool) -> void:
-	ConfigFileHandler.save_audio_volum("Music", $Panel/VBoxContainer/MusicSlider.value)
+	if value_changed:
+		ConfigFileHandler.save_audio_volum("Music", $Panel/VBoxContainer/MusicSlider.value)
 
 
 func _on_sfx_drag_ended(value_changed: bool) -> void:
-	ConfigFileHandler.save_audio_volum("SFX", $Panel/VBoxContainer/SFX.value)
+	if value_changed:
+		ConfigFileHandler.save_audio_volum("SFX", $Panel/VBoxContainer/SFX.value)
 
 
 func _on_voice_drag_ended(value_changed: bool) -> void:
-	ConfigFileHandler.save_audio_volum("Voice", $Panel/VBoxContainer/Voice.value)
+	if value_changed:
+		ConfigFileHandler.save_audio_volum("Voice", $Panel/VBoxContainer/Voice.value)

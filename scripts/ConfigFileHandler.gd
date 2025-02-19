@@ -15,8 +15,8 @@ func _ready() -> void:
 		config.load(VOLUMS_FILE_PATH)
 		
 
-func save_audio_volum(name: String, value: float):
-	config.set_value("audio", name, value)
+func save_audio_volum(vol_name: String, value: float):
+	config.set_value("audio", vol_name, value)
 	config.save(VOLUMS_FILE_PATH)
 	
 func load_audio_volums():

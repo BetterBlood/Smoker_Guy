@@ -79,6 +79,7 @@ func _on_sound_receiver_sound_detected(other_position: Vector3) -> void:
 	#print(result)
 	#print("sound detected at: ", ear.global_position, ", from: ", other_position)
 	if not result.is_empty() && result["collider"] is StaticBody3D:
+		#print(result)
 		print("obstructed -> ignored") # TODO: verify all obstruction mat are working
 	else:
 		if !alerted:
