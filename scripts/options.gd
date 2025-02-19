@@ -4,6 +4,7 @@ var is_open:= true
 @onready var options: OptionsMenu = $"."
 
 func _ready() -> void:
+	process_mode = ProcessMode.PROCESS_MODE_ALWAYS
 	var audio_volums = ConfigFileHandler.load_audio_volums()
 	
 	$Panel/VBoxContainer/Master.value = audio_volums["Master"]
