@@ -12,6 +12,7 @@ func _ready() -> void:
 	$Panel/VBoxContainer/Voice.value = audio_volums["Voice"]
 
 func _on_back_pressed() -> void:
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _process(delta: float) -> void:
@@ -20,13 +21,11 @@ func _process(delta: float) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			is_open = true
 			options.show()
-			#Engine.time_scale = 0
 			get_tree().paused = true
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			is_open = false
 			options.hide()
-			#Engine.time_scale = 1
 			get_tree().paused = false
 
 
