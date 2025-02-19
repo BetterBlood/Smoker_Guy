@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://bkx2gg2alkx8x"]
 
-[ext_resource type="AudioStream" uid="uid://bi76csgnqpp3g" path="res://assets/sounds/music/post apocalypse.ogg" id="1_anp0t"]
+[ext_resource type="AudioStream" uid="uid://b20balbdndvjd" path="res://assets/sounds/music/post apocalypse.ogg" id="1_anp0t"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+process_mode = 3
 stream = ExtResource("1_anp0t")
 volume_db = -15.0
 autoplay = true
