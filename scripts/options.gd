@@ -20,10 +20,14 @@ func _process(delta: float) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			is_open = true
 			options.show()
+			#Engine.time_scale = 0
+			get_tree().paused = true
 		else:
-			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			is_open = false
 			options.hide()
+			#Engine.time_scale = 1
+			get_tree().paused = false
 
 
 func _on_master_value_changed(value: float) -> void:
