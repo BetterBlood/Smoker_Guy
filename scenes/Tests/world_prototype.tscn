@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bqlqvdo4vcb3p"]
+[gd_scene load_steps=13 format=3 uid="uid://bqlqvdo4vcb3p"]
 
 [ext_resource type="PackedScene" uid="uid://dibnc4tp1fkvx" path="res://scenes/Tests/test_floor.tscn" id="1_8exqp"]
 [ext_resource type="Script" path="res://scripts/Tests/world_prototype.gd" id="1_wahwy"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://clgrrv65tewm" path="res://scenes/Tests/test_ramp.tscn" id="5_2yort"]
 [ext_resource type="PackedScene" uid="uid://c0rrjo3wsx3wj" path="res://scenes/Tests/test_room.tscn" id="6_a6o8q"]
 [ext_resource type="PackedScene" uid="uid://sds64ovbu4" path="res://scenes/options.tscn" id="7_mtnrq"]
+[ext_resource type="PackedScene" uid="uid://c7whgqwiiu1e1" path="res://scenes/Interactions/interaction_static.tscn" id="9_64imp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_py0p5"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -35,7 +36,7 @@ shadow_enabled = true
 environment = SubResource("Environment_u1kue")
 
 [node name="TestFloor" parent="." groups=["Floor"] instance=ExtResource("1_8exqp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.475745, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1226, 0)
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_u42wd")]
 transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -0.245153, 0, 0)
@@ -44,16 +45,16 @@ player = NodePath("../Player")
 [node name="PatrolPoints" type="Node" parent="Enemy"]
 
 [node name="A" type="Node3D" parent="Enemy/PatrolPoints"]
-transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -3.34836, 1.18901, 12.6235)
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -1.16677, 1.62621, 12.6235)
 
 [node name="B" type="Node3D" parent="Enemy/PatrolPoints"]
-transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 29.6994, 1.18901, 10.6647)
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 29.6994, 1.8078, 10.6647)
 
 [node name="C" type="Node3D" parent="Enemy/PatrolPoints"]
-transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 27.6784, 1.18901, -10.3651)
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 27.6784, 1.76389, -10.3651)
 
 [node name="D" type="Node3D" parent="Enemy/PatrolPoints"]
-transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 1.56131, 1.18901, -12.3561)
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 1.56131, 2.00257, -12.3561)
 
 [node name="Enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_u42wd")]
 transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 31.2326, 0, -4.15805)
@@ -62,18 +63,31 @@ player = NodePath("../Player")
 [node name="PatrolPoints" type="Node" parent="Enemy2"]
 
 [node name="A" type="Node3D" parent="Enemy2/PatrolPoints"]
-transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 28.4331, 1.18901, -12.8696)
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 28.4331, 1.79576, -12.8696)
 
 [node name="B" type="Node3D" parent="Enemy2/PatrolPoints"]
-transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 2.679, -1.90735e-06, -11.7035)
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 2.679, 0.650628, -11.7035)
 
 [node name="C" type="Node3D" parent="Enemy2/PatrolPoints"]
-transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -0.0997639, 1.18901, 11.9012)
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -0.0997639, 1.66481, 11.9012)
 
 [node name="D" type="Node3D" parent="Enemy2/PatrolPoints"]
-transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 28.9248, 2.31426, 10.2418)
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 28.9248, 2.79802, 10.2418)
+
+[node name="Enemy3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_u42wd")]
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -6.14283, 0, 6.9088)
+player = NodePath("../Player")
+
+[node name="PatrolPoints" type="Node" parent="Enemy3"]
+
+[node name="A" type="Node3D" parent="Enemy3/PatrolPoints"]
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -7.45077, 1.54763, 9.12228)
+
+[node name="B" type="Node3D" parent="Enemy3/PatrolPoints"]
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -4.91, 0.446729, 6.39831)
 
 [node name="Prison" type="Node3D" parent="." groups=["Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.598345, 0)
 
 [node name="TestWall" parent="Prison" instance=ExtResource("4_idu0w")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.5, 0, 0)
@@ -127,3 +141,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -24.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 24.5)
 
 [node name="Options" parent="." instance=ExtResource("7_mtnrq")]
+
+[node name="GuardDistractionToEscapePrisonExample" type="Node" parent="."]
+
+[node name="InteractionStatic" parent="GuardDistractionToEscapePrisonExample" node_paths=PackedStringArray("soundSource", "world") instance=ExtResource("9_64imp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05152, 10.7731, -15.2832)
+strength = 400
+soundSource = NodePath("../Marker3D")
+world = NodePath("../..")
+
+[node name="Marker3D" type="Marker3D" parent="GuardDistractionToEscapePrisonExample"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3257, 1.04684, -15.5858)

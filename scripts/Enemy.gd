@@ -1,7 +1,9 @@
 class_name Enemy extends CharacterBody3D
 #@export var point_a: Vector3
 #@export var point_b: Vector3
-@export var speed := 2.0
+@export var normal_speed := 2.0
+@export var chase_speed := 4
+var speed := normal_speed
 @export var player: RigidBody3D
 var alerted := false
 var target: Vector3
@@ -16,7 +18,6 @@ var current_patrol_index := 0
 @onready var reach_patrol_point: AudioStreamPlayer3D = $Audios/ReachPatrolPoint/ReachPatrolPoint
 
 
-	
 func _ready():
 	if patrol_points.size() > 0:
 		# Initialize target to the first patrol point, maintaining the enemy's current y position
@@ -46,9 +47,16 @@ func _physics_process(delta):
 		if position.distance_to(target) < 1.0:
 			update_patrol_target()
 	else:
-		#TODO catch the player if close to him
-		target = Vector3(player.position.x, position.y, player.position.z)
+		#target = Vector3(player.position.x, position.y, player.position.z)
 		look_at(target, Vector3.UP)
+		
+		if position.distance_to(target) < 1.0:
+			alerted = can_see_player()
+			if alerted:
+				print("TODO catch the player if close to him")
+			else:
+				update_patrol_target()
+				speed = normal_speed
 		
 	
 	move_and_slide()
@@ -65,8 +73,8 @@ func can_see_player() -> bool:
 
 func set_alerted():
 	detect_player_1.play()
-	speed += 2
-	$VisionCone.queue_free()
+	speed = chase_speed
+	#$VisionCone.queue_free()
 	#var mat = StandardMaterial3D.new()
 	#mat.albedo_color = Color.RED
 	#$Body.set_surface_override_material(0, mat)
@@ -78,10 +86,11 @@ func _on_sound_receiver_sound_detected(other_position: Vector3) -> void:
 	var result = space_state.intersect_ray(query)
 	#print(result)
 	#print("sound detected at: ", ear.global_position, ", from: ", other_position)
-	if not result.is_empty() && result["collider"] is StaticBody3D:
+	if not result.is_empty() and result["collider"] is StaticBody3D:
 		#print(result)
 		print("obstructed -> ignored") # TODO: verify all obstruction mat are working
 	else:
 		if !alerted:
 			alerted = true
 			set_alerted()
+			target = other_position
