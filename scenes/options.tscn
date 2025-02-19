@@ -33,10 +33,29 @@ alignment = 1
 
 [node name="Back" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Back"
+text = "Leave and retrun to main menu"
 
-[node name="VolumeSlider" type="HSlider" parent="Panel/VBoxContainer"]
+[node name="Master" type="HSlider" parent="Panel/VBoxContainer"]
 layout_mode = 2
 
+[node name="MusicSlider" type="HSlider" parent="Panel/VBoxContainer"]
+layout_mode = 2
+value = 50.0
+
+[node name="SFX" type="HSlider" parent="Panel/VBoxContainer"]
+layout_mode = 2
+value = 50.0
+
+[node name="Voice" type="HSlider" parent="Panel/VBoxContainer"]
+layout_mode = 2
+value = 50.0
+
 [connection signal="pressed" from="Panel/VBoxContainer/Back" to="." method="_on_back_pressed"]
-[connection signal="value_changed" from="Panel/VBoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="drag_ended" from="Panel/VBoxContainer/Master" to="." method="_on_master_drag_ended"]
+[connection signal="value_changed" from="Panel/VBoxContainer/Master" to="." method="_on_master_value_changed"]
+[connection signal="drag_ended" from="Panel/VBoxContainer/MusicSlider" to="." method="_on_music_slider_drag_ended"]
+[connection signal="value_changed" from="Panel/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="drag_ended" from="Panel/VBoxContainer/SFX" to="." method="_on_sfx_drag_ended"]
+[connection signal="value_changed" from="Panel/VBoxContainer/SFX" to="." method="_on_sfx_value_changed"]
+[connection signal="drag_ended" from="Panel/VBoxContainer/Voice" to="." method="_on_voice_drag_ended"]
+[connection signal="value_changed" from="Panel/VBoxContainer/Voice" to="." method="_on_voice_value_changed"]

@@ -46,6 +46,7 @@ func _physics_process(delta):
 		if position.distance_to(target) < 1.0:
 			update_patrol_target()
 	else:
+		#TODO catch the player if close to him
 		target = Vector3(player.position.x, position.y, player.position.z)
 		look_at(target, Vector3.UP)
 		
