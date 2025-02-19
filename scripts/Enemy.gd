@@ -42,6 +42,8 @@ func _physics_process(delta):
 	# Calculate the direction vector from the enemy to the target
 	var direction = (target - position).normalized()
 	#$Body.look_at(player.global_transform.origin, Vector3.UP)
+	if not is_on_floor():
+		direction += get_gravity()
 	
 	position += direction * speed * delta
 	if (!alerted):
@@ -60,6 +62,8 @@ func _physics_process(delta):
 			alerted = can_see_player()
 			if alerted:
 				print("TODO catch the player if close to him (GAME OVER)")
+				update_patrol_target()
+				speed = normal_speed
 			else:
 				update_patrol_target()
 				speed = normal_speed
@@ -90,7 +94,7 @@ func _on_sound_receiver_sound_detected(other_position: Vector3) -> void:
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(ear.global_position, other_position)
 	var result = space_state.intersect_ray(query)
-	print(result)
+	#print(result)
 	#print("sound detected at: ", ear.global_position, ", from: ", other_position)
 	if not result.is_empty() and result["collider"] is StaticBody3D:
 		#print(result)
