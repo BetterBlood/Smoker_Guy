@@ -5,6 +5,8 @@ class_name Enemy extends CharacterBody3D
 @export var chase_speed := 4
 var speed := normal_speed
 @export var player: RigidBody3D
+var player_id: int
+var chase_player:= false
 var alerted := false
 var target: Vector3
 @onready var patrol_points := $PatrolPoints.get_children()
@@ -24,6 +26,8 @@ func _ready():
 		target = get_patrol_point_position(current_patrol_index)
 	else:
 		push_error("No patrol points found in $PatrolPoints")
+	
+	player_id = player.get_instance_id()
 
 func get_patrol_point_position(index: int) -> Vector3:
 	var patrol_point = patrol_points[index]
@@ -48,12 +52,14 @@ func _physics_process(delta):
 			update_patrol_target()
 	else:
 		#target = Vector3(player.position.x, position.y, player.position.z)
+		if chase_player:
+			target = player.position
 		look_at(target, Vector3.UP)
 		
 		if position.distance_to(target) < 1.0:
 			alerted = can_see_player()
 			if alerted:
-				print("TODO catch the player if close to him")
+				print("TODO catch the player if close to him (GAME OVER)")
 			else:
 				update_patrol_target()
 				speed = normal_speed
@@ -84,7 +90,7 @@ func _on_sound_receiver_sound_detected(other_position: Vector3) -> void:
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(ear.global_position, other_position)
 	var result = space_state.intersect_ray(query)
-	#print(result)
+	print(result)
 	#print("sound detected at: ", ear.global_position, ", from: ", other_position)
 	if not result.is_empty() and result["collider"] is StaticBody3D:
 		#print(result)
@@ -93,4 +99,8 @@ func _on_sound_receiver_sound_detected(other_position: Vector3) -> void:
 		if !alerted:
 			alerted = true
 			set_alerted()
-			target = other_position
+			if not result.is_empty() and result["collider_id"] == player_id:
+				target = player.position
+				chase_player = true
+			else:
+				target = other_position
