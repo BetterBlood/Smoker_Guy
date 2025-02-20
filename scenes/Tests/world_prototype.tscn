@@ -27,6 +27,7 @@ script = ExtResource("1_wahwy")
 
 [node name="Player" parent="." instance=ExtResource("3_bry32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.769, 2.81193, -18.7001)
+gravity_scale = 2.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -99,7 +100,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.5, 
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.5, 0, -10)
 
 [node name="TestRamp" parent="Prison" instance=ExtResource("5_2yort")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.48243, 0.0267839, -8.83832)
+transform = Transform3D(-4.33656e-08, -7.03748e-09, 1.0475, -0.246069, 1.24301, -5.60627e-09, -0.969252, -0.315568, -4.5443e-08, -2.48243, -0.969554, -5.86654)
 
 [node name="TestRoom" parent="Prison" instance=ExtResource("6_a6o8q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)

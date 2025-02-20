@@ -56,10 +56,18 @@ func handle_move(delta: float):
 			
 			sound_mult = 1
 	
-	apply_central_force(twist_pivot.basis * input * 1200.0 * delta)
+	var raw_force = twist_pivot.basis * input * 1200.0 * delta
+	if is_grounded():
+		var ground_normal = $GroundDetector.get_collision_normal()
+		var slide_force = raw_force.slide(ground_normal)
+		var ramp_bias = clamp(1.0 - ground_normal.dot(Vector3.UP), 0, 1)
+		var upward_bias = Vector3.UP * ramp_bias * 2000.0 * delta
+		var move_force = slide_force + upward_bias
+		apply_central_force(move_force * gravity_scale)
+	else:
+		apply_central_force(raw_force)
 	
 	if (Input.is_action_pressed("jump")):
-		#print(is_grounded())
 		if is_grounded():
 			apply_central_force(Vector3.UP * 10000 * delta)
 			if not jump.playing:
