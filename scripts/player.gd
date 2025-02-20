@@ -11,6 +11,7 @@ var pitch_input := 0.0
 @onready var jump: AudioStreamPlayer3D = $Audios/Jump
 
 const sound_emitter = preload("res://scenes/sound_emitter.tscn")
+const throwable_sound_maker = preload("res://scenes/throwable_sound_maker.tscn")
 var val = 0
 const walk_sound_strength = 10
 const jump_sound_strength = 30
@@ -33,6 +34,7 @@ func _process(delta: float) -> void:
 	$ShadowMesh.rotation = Vector3.ZERO
 	handle_move(delta)
 	handle_look()
+	handle_throw()
 	
 func is_grounded() -> bool:
 	return $GroundDetector.is_colliding()
@@ -67,7 +69,7 @@ func handle_move(delta: float):
 	else:
 		apply_central_force(raw_force)
 	
-	if (Input.is_action_pressed("jump")):
+	if Input.is_action_pressed("jump"):
 		if is_grounded():
 			apply_central_force(Vector3.UP * 10000 * delta)
 			if not jump.playing:
@@ -100,6 +102,16 @@ func handle_look():
 #func _on_area_3d_area_entered(area: Area3D) -> void:
 	#if area.is_in_group("floor"):
 		#print("Touching Floor")
+
+func handle_throw():
+	if Input.is_action_just_pressed("throw"):
+		var tsm = throwable_sound_maker.instantiate()
+		tsm.set_world(world)
+		tsm.position = $TwistPivot/ThrowPosition.global_position
+		var throwing_direction = $TwistPivot/ThrowPosition.global_position - position
+		tsm.apply_central_impulse(throwing_direction * 75)
+		world.add_child(tsm)
+
 
 func call_heal(amount: int) -> void:
 	print("TODO: handle heal on player")

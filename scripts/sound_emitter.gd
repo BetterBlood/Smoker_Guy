@@ -11,6 +11,7 @@ func setStrengh(stren:= 50) -> void:
 
 func _process(delta: float) -> void:
 	if radar.scale.x < strength:
-		radar.scale += propagation * propagation_speed
+		for i in range(propagation_speed):
+			radar.scale += propagation
 	else:
 		queue_free()

@@ -29,7 +29,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Enemy" type="CharacterBody3D"]
+[node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
 transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 0, 0, 0)
 script = ExtResource("1_y30oo")
 
@@ -139,5 +139,9 @@ bus = &"Voice"
 stream = ExtResource("6_6ujad")
 volume_db = -15.0
 bus = &"Voice"
+
+[node name="GroundDetector" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0282525, 0)
+target_position = Vector3(0, -0.1, 0)
 
 [connection signal="sound_detected" from="Ear/SoundReceiver" to="." method="_on_sound_receiver_sound_detected"]

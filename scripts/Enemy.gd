@@ -42,7 +42,7 @@ func _physics_process(delta):
 	# Calculate the direction vector from the enemy to the target
 	var direction = (target - position).normalized()
 	#$Body.look_at(player.global_transform.origin, Vector3.UP)
-	if not is_on_floor():
+	if not is_grounded():
 		direction += get_gravity()
 	
 	position += direction * speed * delta
@@ -108,3 +108,12 @@ func _on_sound_receiver_sound_detected(other_position: Vector3) -> void:
 				chase_player = true
 			else:
 				target = other_position
+
+func is_grounded() -> bool:
+	return $GroundDetector.is_colliding()
+
+func has_been_hit_by_player():
+	alerted = true
+	set_alerted()
+	target = player.position
+	chase_player = true
