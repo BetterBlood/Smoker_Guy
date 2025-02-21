@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://bka3q3ssyynh4"]
+
+[ext_resource type="Script" path="res://scripts/Interactions/bottle.gd" id="1_wro1k"]
+[ext_resource type="PackedScene" uid="uid://b6bkqjtbsmj8k" path="res://scenes/Interactions/interactions_detector.tscn" id="2_stslh"]
+[ext_resource type="Material" uid="uid://cbjv6ga7qj4yq" path="res://mat/bottle.tres" id="3_2etmx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qu8td"]
+bounce = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ynr57"]
+radius = 3.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_eunq1"]
+material = ExtResource("3_2etmx")
+top_radius = 0.1
+bottom_radius = 0.2
+height = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8tnfq"]
+material = ExtResource("3_2etmx")
+top_radius = 0.2
+bottom_radius = 0.15
+height = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_iamnd"]
+material = ExtResource("3_2etmx")
+top_radius = 0.15
+bottom_radius = 0.2
+height = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qi1vk"]
+material = ExtResource("3_2etmx")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1kqai"]
+height = 0.782672
+radius = 0.196554
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3ff2j"]
+height = 0.779772
+radius = 0.190333
+
+[node name="Bottle" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_qu8td")
+script = ExtResource("1_wro1k")
+
+[node name="InteractionsDetector" parent="." instance=ExtResource("2_stslh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.277825, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionsDetector"]
+shape = SubResource("SphereShape3D_ynr57")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.707847, 0)
+mesh = SubResource("CylinderMesh_eunq1")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.557847, 0)
+mesh = SubResource("CylinderMesh_8tnfq")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.457847, 0)
+mesh = SubResource("CylinderMesh_iamnd")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.207847, 0)
+mesh = SubResource("CylinderMesh_qi1vk")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="DeleteTime" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.277825, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.124066, 0)
+shape = SubResource("CylinderShape3D_1kqai")
+
+[node name="Shape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40305, 0)
+shape = SubResource("CylinderShape3D_3ff2j")
+
+[connection signal="timeout" from="DeleteTime" to="." method="_on_delete_time_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

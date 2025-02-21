@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqlqvdo4vcb3p"]
+[gd_scene load_steps=14 format=3 uid="uid://bqlqvdo4vcb3p"]
 
 [ext_resource type="PackedScene" uid="uid://dibnc4tp1fkvx" path="res://scenes/Tests/test_floor.tscn" id="1_8exqp"]
 [ext_resource type="Script" path="res://scripts/Tests/world_prototype.gd" id="1_wahwy"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://clgrrv65tewm" path="res://scenes/Tests/test_ramp.tscn" id="5_2yort"]
 [ext_resource type="PackedScene" uid="uid://c0rrjo3wsx3wj" path="res://scenes/Tests/test_room.tscn" id="6_a6o8q"]
 [ext_resource type="PackedScene" uid="uid://sds64ovbu4" path="res://scenes/options.tscn" id="7_mtnrq"]
+[ext_resource type="PackedScene" uid="uid://bka3q3ssyynh4" path="res://scenes/Interactions/bottle.tscn" id="8_123fh"]
 [ext_resource type="PackedScene" uid="uid://c7whgqwiiu1e1" path="res://scenes/Interactions/interaction_static.tscn" id="9_64imp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_py0p5"]
@@ -26,7 +27,7 @@ tonemap_mode = 2
 script = ExtResource("1_wahwy")
 
 [node name="Player" parent="." instance=ExtResource("3_bry32")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.769, 2.81193, -18.7001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.769, 2.81193, 12.8654)
 gravity_scale = 2.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -141,6 +142,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -24.5)
 [node name="TestWall4" parent="Prison" instance=ExtResource("4_idu0w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 24.5)
 
+[node name="TestWall6" parent="Prison" instance=ExtResource("4_idu0w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4994, -8.82214, 0)
+
 [node name="Options" parent="." instance=ExtResource("7_mtnrq")]
 
 [node name="GuardDistractionToEscapePrisonExample" type="Node" parent="."]
@@ -153,3 +157,52 @@ world = NodePath("../..")
 
 [node name="Marker3D" type="Marker3D" parent="GuardDistractionToEscapePrisonExample"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3257, 1.04684, -15.5858)
+
+[node name="InteractionStatic2" parent="GuardDistractionToEscapePrisonExample" node_paths=PackedStringArray("soundSource", "world") instance=ExtResource("9_64imp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3015, 1.58746, 0)
+strength = 200
+soundSource = NodePath("../Marker3D2")
+world = NodePath("../..")
+
+[node name="Marker3D2" type="Marker3D" parent="GuardDistractionToEscapePrisonExample"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2401, 1.55153, 8.73017)
+
+[node name="Bottle" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8449, 1.83239, -0.0035243)
+player = NodePath("../Player")
+
+[node name="Bottle2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2864, 1.83239, -0.0035243)
+player = NodePath("../Player")
+
+[node name="Bottle3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4203, 1.83239, -0.0035243)
+player = NodePath("../Player")
+
+[node name="Bottle4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6549, 1.83239, -0.0035243)
+player = NodePath("../Player")
+
+[node name="Bottle5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.994, 1.83239, -0.0035243)
+player = NodePath("../Player")
+
+[node name="Bottle6" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8643, 1.83239, -0.0035243)
+player = NodePath("../Player")
+
+[node name="Bottle7" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9131, 1.83239, -0.0035243)
+player = NodePath("../Player")
+
+[node name="Bottle8" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1029, 1.83239, -0.0035243)
+player = NodePath("../Player")
+
+[node name="Bottle9" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.90921, 1.83239, -0.0035243)
+player = NodePath("../Player")
+
+[node name="Bottle10" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79057, 1.83239, -0.0035243)
+player = NodePath("../Player")
