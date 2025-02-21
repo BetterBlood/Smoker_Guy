@@ -4,6 +4,7 @@ class_name Enemy extends CharacterBody3D
 @export var normal_speed := 2.0
 @export var chase_speed := 4
 var speed := normal_speed
+var wait_to_move:= false
 @export var player: RigidBody3D
 var player_id: int
 var chase_player:= false
@@ -44,6 +45,9 @@ func _physics_process(delta):
 	#$Body.look_at(player.global_transform.origin, Vector3.UP)
 	if not is_grounded():
 		direction += get_gravity()
+		
+	if wait_to_move:
+		return
 	
 	position += direction * speed * delta
 	if (!alerted):
@@ -62,11 +66,8 @@ func _physics_process(delta):
 			alerted = can_see_player()
 			if alerted:
 				print("TODO catch the player if close to him (GAME OVER)")
-				update_patrol_target()
-				speed = normal_speed
-			else:
-				update_patrol_target()
-				speed = normal_speed
+			update_patrol_target()
+			speed = normal_speed
 		
 	
 	move_and_slide()
