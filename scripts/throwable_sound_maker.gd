@@ -14,7 +14,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			push_error( "No world found in ThrowableSoundMaker: ", get_rid(), \
 						", Please set one using set_world(world_given:Node3D)")
 		
-	if body is StaticBody3D:
+	if body is StaticBody3D or body is CSGBox3D:
 		var sound_prop = sound_emitter.instantiate()
 		sound_prop.setStrengh(strength)
 		sound_prop.position = position

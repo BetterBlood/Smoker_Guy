@@ -2,8 +2,6 @@ extends Node3D
 
 @onready var interactionDetector:= $InteractionsDetector
 
-@export var spawnableObjects: Array[PackedScene] = []
-@export var positionObjects: Array[Vector2] = []
 @export var interactionToDisplay: String = "to take heal"
 @export var player: Player
 @export var healing_value:= 10
