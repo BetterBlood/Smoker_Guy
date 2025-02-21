@@ -4,7 +4,6 @@ class_name Enemy extends CharacterBody3D
 @export var normal_speed := 2.0
 @export var chase_speed := 4
 var speed := normal_speed
-var wait_to_move:= false
 @export var player: RigidBody3D
 var player_id: int
 var chase_player:= false
@@ -41,13 +40,11 @@ func update_patrol_target():
 
 func _physics_process(delta):
 	# Calculate the direction vector from the enemy to the target
-	var direction = (target - position).normalized()
+	var direction_3d = target - position
+	var direction = Vector3(direction_3d.x, 0, direction_3d.z).normalized()
 	#$Body.look_at(player.global_transform.origin, Vector3.UP)
 	if not is_grounded():
 		direction += get_gravity()
-		
-	if wait_to_move:
-		return
 	
 	position += direction * speed * delta
 	if (!alerted):
@@ -97,7 +94,7 @@ func _on_sound_receiver_sound_detected(other_position: Vector3) -> void:
 	var result = space_state.intersect_ray(query)
 	#print(result)
 	#print("sound detected at: ", ear.global_position, ", from: ", other_position)
-	if not result.is_empty() and result["collider"] is StaticBody3D:
+	if not result.is_empty() and result["collider"] in [StaticBody3D, CSGBox3D]:
 		#print(result)
 		print("obstructed -> ignored") # TODO: verify all obstruction mat are working
 	else:
