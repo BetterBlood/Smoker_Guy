@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpf83ehfyblos"]
+
+[ext_resource type="PackedScene" uid="uid://dxgwkae02ctgp" path="res://assets/chocolate.glb" id="1_5s74n"]
+[ext_resource type="Script" path="res://scripts/Interactions/chocolate.gd" id="2_d46an"]
+[ext_resource type="PackedScene" uid="uid://b6bkqjtbsmj8k" path="res://scenes/Interactions/interactions_detector.tscn" id="3_7cqyi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ueyd4"]
+radius = 2.0
+
+[node name="chocolate" instance=ExtResource("1_5s74n")]
+script = ExtResource("2_d46an")
+
+[node name="InteractionsDetector" parent="." index="1" instance=ExtResource("3_7cqyi")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionsDetector" index="0"]
+shape = SubResource("SphereShape3D_ueyd4")

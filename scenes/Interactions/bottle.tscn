@@ -75,10 +75,10 @@ skeleton = NodePath("../MeshInstance3D2")
 [node name="DeleteTime" type="Timer" parent="."]
 wait_time = 3.0
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="SoundEmitterArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0869864, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundEmitterArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.124066, 0)
 shape = SubResource("CylinderShape3D_1kqai")
 
@@ -87,4 +87,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0382386, 0)
 shape = SubResource("CylinderShape3D_3ff2j")
 
 [connection signal="timeout" from="DeleteTime" to="." method="_on_delete_time_timeout"]
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="SoundEmitterArea" to="." method="_on_area_3d_body_entered"]

@@ -19,6 +19,9 @@ const crouch_mult = 0.3
 var sound_mult = 1
 @onready var world: Node3D = $".."
 
+var chocolate_colected := 0
+signal chocolate_colected_signal(number:int)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -130,3 +133,10 @@ func handle_throw():
 
 func call_heal(amount: int) -> void:
 	print("TODO: handle heal on player")
+
+
+func collect_chocolate() -> void:
+	chocolate_colected += 1
+	chocolate_colected_signal.emit(chocolate_colected)
+	
+	

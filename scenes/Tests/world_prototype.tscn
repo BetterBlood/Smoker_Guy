@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bqlqvdo4vcb3p"]
+[gd_scene load_steps=15 format=3 uid="uid://bqlqvdo4vcb3p"]
 
 [ext_resource type="PackedScene" uid="uid://dibnc4tp1fkvx" path="res://scenes/Tests/test_floor.tscn" id="1_8exqp"]
 [ext_resource type="Script" path="res://scripts/Tests/world_prototype.gd" id="1_wahwy"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://sds64ovbu4" path="res://scenes/options.tscn" id="7_mtnrq"]
 [ext_resource type="PackedScene" uid="uid://bka3q3ssyynh4" path="res://scenes/Interactions/bottle.tscn" id="8_123fh"]
 [ext_resource type="PackedScene" uid="uid://c7whgqwiiu1e1" path="res://scenes/Interactions/interaction_static.tscn" id="9_64imp"]
+[ext_resource type="PackedScene" uid="uid://bpf83ehfyblos" path="res://scenes/Interactions/chocolate.tscn" id="11_ldcuy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_py0p5"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -25,6 +26,7 @@ tonemap_mode = 2
 
 [node name="WorldPrototype" type="Node3D"]
 script = ExtResource("1_wahwy")
+chocolate_number_to_win = 4
 
 [node name="Player" parent="." instance=ExtResource("3_bry32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.769, 2.81193, 12.8654)
@@ -167,42 +169,66 @@ world = NodePath("../..")
 [node name="Marker3D2" type="Marker3D" parent="GuardDistractionToEscapePrisonExample"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2401, 1.55153, 8.73017)
 
-[node name="Bottle" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8449, 2.2377, -0.0035243)
-player = NodePath("../Player")
+[node name="Bottles" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 3, 8)
 
-[node name="Bottle2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2864, 2.2377, -0.0035243)
-player = NodePath("../Player")
+[node name="Bottle" parent="Bottles" node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8449, -0.762297, -8.00352)
+player = NodePath("../../Player")
 
-[node name="Bottle3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4203, 2.2377, -0.0035243)
-player = NodePath("../Player")
+[node name="Bottle2" parent="Bottles" node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2864, -0.762297, -8.00352)
+player = NodePath("../../Player")
 
-[node name="Bottle4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6549, 2.2377, -0.0035243)
-player = NodePath("../Player")
+[node name="Bottle3" parent="Bottles" node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4203, -0.762297, -8.00352)
+player = NodePath("../../Player")
 
-[node name="Bottle5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.994, 2.2377, -0.0035243)
-player = NodePath("../Player")
+[node name="Bottle4" parent="Bottles" node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6549, -0.762297, -8.00352)
+player = NodePath("../../Player")
 
-[node name="Bottle6" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8643, 2.2377, -0.0035243)
-player = NodePath("../Player")
+[node name="Bottle5" parent="Bottles" node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.994, -0.762297, -8.00352)
+player = NodePath("../../Player")
 
-[node name="Bottle7" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9131, 2.2377, -0.0035243)
-player = NodePath("../Player")
+[node name="Bottle6" parent="Bottles" node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8643, -0.762297, -8.00352)
+player = NodePath("../../Player")
 
-[node name="Bottle8" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1029, 2.2377, -0.0035243)
-player = NodePath("../Player")
+[node name="Bottle7" parent="Bottles" node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0869, -0.762297, -8.00352)
+player = NodePath("../../Player")
 
-[node name="Bottle9" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.90921, 2.2377, -0.0035243)
-player = NodePath("../Player")
+[node name="Bottle8" parent="Bottles" node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8971, -0.762297, -8.00352)
+player = NodePath("../../Player")
 
-[node name="Bottle10" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79057, 2.2377, -0.0035243)
-player = NodePath("../Player")
+[node name="Bottle9" parent="Bottles" node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09079, -0.762297, -8.00352)
+player = NodePath("../../Player")
+
+[node name="Bottle10" parent="Bottles" node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.20943, -0.762297, -8.00352)
+player = NodePath("../../Player")
+
+[node name="WiningCondition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.769, 2.81193, 12.8654)
+
+[node name="chocolate" parent="WiningCondition" node_paths=PackedStringArray("player") instance=ExtResource("11_ldcuy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2049, 8.87793, -33.9708)
+player = NodePath("../../Player")
+
+[node name="chocolate2" parent="WiningCondition" node_paths=PackedStringArray("player") instance=ExtResource("11_ldcuy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78113, 0, -30.5034)
+player = NodePath("../../Player")
+
+[node name="chocolate3" parent="WiningCondition" node_paths=PackedStringArray("player") instance=ExtResource("11_ldcuy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5947, -1.19423, -3.08154)
+player = NodePath("../../Player")
+
+[node name="chocolate4" parent="WiningCondition" node_paths=PackedStringArray("player") instance=ExtResource("11_ldcuy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25706, 0, 5.66434)
+player = NodePath("../../Player")
+
+[connection signal="chocolate_colected_signal" from="Player" to="." method="_on_player_chocolate_colected_signal"]
