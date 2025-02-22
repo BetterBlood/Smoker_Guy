@@ -47,28 +47,28 @@ physics_material_override = SubResource("PhysicsMaterial_qu8td")
 script = ExtResource("1_wro1k")
 
 [node name="InteractionsDetector" parent="." instance=ExtResource("2_stslh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.277825, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0869864, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionsDetector"]
 shape = SubResource("SphereShape3D_ynr57")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.707847, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.343036, 0)
 mesh = SubResource("CylinderMesh_eunq1")
 skeleton = NodePath("")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.557847, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.193036, 0)
 mesh = SubResource("CylinderMesh_8tnfq")
 skeleton = NodePath("")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.457847, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0930356, 0)
 mesh = SubResource("CylinderMesh_iamnd")
 skeleton = NodePath("../MeshInstance3D")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.207847, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.156964, 0)
 mesh = SubResource("CylinderMesh_qi1vk")
 skeleton = NodePath("../MeshInstance3D2")
 
@@ -76,14 +76,14 @@ skeleton = NodePath("../MeshInstance3D2")
 wait_time = 3.0
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.277825, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0869864, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.124066, 0)
 shape = SubResource("CylinderShape3D_1kqai")
 
 [node name="Shape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40305, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0382386, 0)
 shape = SubResource("CylinderShape3D_3ff2j")
 
 [connection signal="timeout" from="DeleteTime" to="." method="_on_delete_time_timeout"]

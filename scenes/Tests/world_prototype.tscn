@@ -168,41 +168,41 @@ world = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2401, 1.55153, 8.73017)
 
 [node name="Bottle" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8449, 1.83239, -0.0035243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8449, 2.2377, -0.0035243)
 player = NodePath("../Player")
 
 [node name="Bottle2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2864, 1.83239, -0.0035243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2864, 2.2377, -0.0035243)
 player = NodePath("../Player")
 
 [node name="Bottle3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4203, 1.83239, -0.0035243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4203, 2.2377, -0.0035243)
 player = NodePath("../Player")
 
 [node name="Bottle4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6549, 1.83239, -0.0035243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6549, 2.2377, -0.0035243)
 player = NodePath("../Player")
 
 [node name="Bottle5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.994, 1.83239, -0.0035243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.994, 2.2377, -0.0035243)
 player = NodePath("../Player")
 
 [node name="Bottle6" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8643, 1.83239, -0.0035243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8643, 2.2377, -0.0035243)
 player = NodePath("../Player")
 
 [node name="Bottle7" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9131, 1.83239, -0.0035243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9131, 2.2377, -0.0035243)
 player = NodePath("../Player")
 
 [node name="Bottle8" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1029, 1.83239, -0.0035243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1029, 2.2377, -0.0035243)
 player = NodePath("../Player")
 
 [node name="Bottle9" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.90921, 1.83239, -0.0035243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.90921, 2.2377, -0.0035243)
 player = NodePath("../Player")
 
 [node name="Bottle10" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_123fh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79057, 1.83239, -0.0035243)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79057, 2.2377, -0.0035243)
 player = NodePath("../Player")
