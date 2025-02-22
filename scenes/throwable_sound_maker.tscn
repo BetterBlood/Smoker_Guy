@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://738po2m0rnll"]
+[gd_scene load_steps=8 format=3 uid="uid://738po2m0rnll"]
 
 [ext_resource type="Script" path="res://scripts/throwable_sound_maker.gd" id="1_kbygw"]
+[ext_resource type="AudioStream" uid="uid://c2jj40htbqunr" path="res://assets/sounds/sfx/hollow wood hit.ogg" id="2_qcd4f"]
+[ext_resource type="AudioStream" uid="uid://c06ayb5ivawk4" path="res://assets/sounds/sfx/knock something over idk.ogg" id="3_1aydm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qbtxn"]
 radius = 0.1
@@ -22,6 +24,7 @@ height = 0.2
 radius = 0.11
 
 [node name="ThrowableSoundMaker" type="RigidBody3D"]
+mass = 0.1
 gravity_scale = 9.81
 script = ExtResource("1_kbygw")
 
@@ -35,5 +38,15 @@ mesh = SubResource("SphereMesh_nwnny")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_j72hs")
+
+[node name="hitEnemy" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_qcd4f")
+volume_db = -30.0
+bus = &"SFX"
+
+[node name="hitFloor" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_1aydm")
+volume_db = -30.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

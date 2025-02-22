@@ -27,6 +27,7 @@ func _action_on_interact() -> void:
 		is_thown = true
 		$DeleteTime.start()
 		world = player.world
+		$PushingBottle.play()
 
 
 func _on_delete_time_timeout() -> void:
@@ -44,11 +45,11 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			return
 		
 	if body is StaticBody3D or body is CSGBox3D or body.is_in_group("Floor"):
+		$BottleBoing.play()
 		var sound_prop = sound_emitter.instantiate()
 		sound_prop.setStrengh(sound_strength)
 		sound_prop.position = position
 		world.add_child(sound_prop)
-		queue_free()
 		
 	if body.is_in_group("Enemy"):
 		var enemy = body as Enemy

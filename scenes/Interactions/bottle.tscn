@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bka3q3ssyynh4"]
+[gd_scene load_steps=14 format=3 uid="uid://bka3q3ssyynh4"]
 
 [ext_resource type="Script" path="res://scripts/Interactions/bottle.gd" id="1_wro1k"]
 [ext_resource type="PackedScene" uid="uid://b6bkqjtbsmj8k" path="res://scenes/Interactions/interactions_detector.tscn" id="2_stslh"]
 [ext_resource type="Material" uid="uid://cbjv6ga7qj4yq" path="res://mat/bottle.tres" id="3_2etmx"]
+[ext_resource type="AudioStream" uid="uid://c1r6xxaadq174" path="res://assets/sounds/sfx/bottles/knock over metal bottle 2.ogg" id="4_omwsu"]
+[ext_resource type="AudioStream" uid="uid://cfcj6atv3r6fw" path="res://assets/sounds/sfx/bottles/knock over metal bottle 1.ogg" id="5_q1qfk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qu8td"]
 bounce = 0.2
@@ -85,6 +87,16 @@ shape = SubResource("CylinderShape3D_1kqai")
 [node name="Shape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0382386, 0)
 shape = SubResource("CylinderShape3D_3ff2j")
+
+[node name="PushingBottle" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_omwsu")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="BottleBoing" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_q1qfk")
+volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="timeout" from="DeleteTime" to="." method="_on_delete_time_timeout"]
 [connection signal="body_entered" from="SoundEmitterArea" to="." method="_on_area_3d_body_entered"]
