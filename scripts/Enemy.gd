@@ -88,7 +88,7 @@ func set_alerted():
 
 func _on_sound_receiver_sound_detected(other_position: Vector3) -> void:
 	var space_state = get_world_3d().direct_space_state
-	var query = PhysicsRayQueryParameters3D.create(ear.global_position, other_position)
+	var query = PhysicsRayQueryParameters3D.create(ear.global_position, other_position + Vector3.UP)
 	var result = space_state.intersect_ray(query)
 	#print(result)
 	#print("sound detected at: ", ear.global_position, ", from: ", other_position)
