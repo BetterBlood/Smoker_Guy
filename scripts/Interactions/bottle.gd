@@ -6,6 +6,7 @@ extends RigidBody3D
 @export var player: Player
 @export var impulse_strength:= 10
 @export var sound_strength:= 50
+var is_thown:= false
 
 var world:Node3D = null
 const sound_emitter = preload("res://scenes/sound_emitter.tscn")
@@ -23,6 +24,7 @@ func _action_on_interact() -> void:
 		var direction = Vector3(dir_x, 0, dir_z)
 		direction.normalized()
 		apply_impulse(direction * impulse_strength)
+		is_thown = true
 		$DeleteTime.start()
 		world = player.world
 
@@ -32,6 +34,9 @@ func _on_delete_time_timeout() -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
+	if not is_thown:
+		return
+	
 	if world == null:
 		world = $".."
 		if world == null:
