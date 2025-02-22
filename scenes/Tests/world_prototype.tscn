@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bqlqvdo4vcb3p"]
+[gd_scene load_steps=19 format=3 uid="uid://bqlqvdo4vcb3p"]
 
 [ext_resource type="PackedScene" uid="uid://dibnc4tp1fkvx" path="res://scenes/Tests/test_floor.tscn" id="1_8exqp"]
 [ext_resource type="Script" path="res://scripts/Tests/world_prototype.gd" id="1_wahwy"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://bpf83ehfyblos" path="res://scenes/Interactions/chocolate.tscn" id="11_ldcuy"]
 [ext_resource type="PackedScene" uid="uid://0kpij3puv3f3" path="res://scenes/UI/ui.tscn" id="12_3ngbj"]
 [ext_resource type="PackedScene" uid="uid://cygop0uwuc6k" path="res://scenes/UI/transitions.tscn" id="13_bccbq"]
+[ext_resource type="PackedScene" uid="uid://3ohbgjdjvlan" path="res://scenes/UI/you_win.tscn" id="14_qk6e1"]
+[ext_resource type="PackedScene" uid="uid://uynwnx0yd5cv" path="res://scenes/UI/game_over.tscn" id="15_h51ld"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_py0p5"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -36,6 +38,14 @@ chocolate_number_to_win = 4
 
 [node name="Transitions" parent="." instance=ExtResource("13_bccbq")]
 visible = false
+
+[node name="YouWin" parent="." instance=ExtResource("14_qk6e1")]
+visible = false
+mouse_filter = 2
+
+[node name="GameOver" parent="." instance=ExtResource("15_h51ld")]
+visible = false
+mouse_filter = 2
 
 [node name="Player" parent="." instance=ExtResource("3_bry32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.769, 2.81193, 12.8654)
@@ -238,6 +248,7 @@ player = NodePath("../../Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25706, 0, 5.66434)
 player = NodePath("../../Player")
 
+[connection signal="transition_finished" from="Transitions" to="." method="_on_transitions_transition_finished"]
 [connection signal="transitionned" from="Transitions" to="." method="_on_transitions_transitionned"]
 [connection signal="chocolate_colected_signal" from="Player" to="." method="_on_player_chocolate_colected_signal"]
 [connection signal="player_catched" from="Enemy3" to="." method="_player_catched"]

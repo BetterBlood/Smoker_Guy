@@ -63,7 +63,6 @@ func _physics_process(delta):
 			if alerted and not game_ended:
 				game_ended = true
 				player_catched.emit()
-				print("TODO catch the player if close to him (GAME OVER)")
 			
 			update_patrol_target()
 			speed = normal_speed

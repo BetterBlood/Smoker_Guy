@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://b3utv1asyo0gj"]
 
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_y30oo"]
-[ext_resource type="Texture2D" uid="uid://ba12qcqfbuvhk" path="res://assets/alert_guard.png" id="2_4h5hk"]
+[ext_resource type="Texture2D" uid="uid://bkyp2adksc6hs" path="res://assets/alert_guard.png" id="2_4h5hk"]
 [ext_resource type="PackedScene" uid="uid://52gbq5fabglk" path="res://scenes/sound_receiver.tscn" id="2_m7243"]
-[ext_resource type="AudioStream" uid="uid://dtlmtl0nf3hn5" path="res://assets/sounds/voices/guards/guard hey 1.ogg" id="4_h0owq"]
-[ext_resource type="AudioStream" uid="uid://315kxssypyt3" path="res://assets/sounds/voices/guards/guard laugh 1.ogg" id="5_jlpub"]
-[ext_resource type="AudioStream" uid="uid://dj3ktsft4v3hj" path="res://assets/sounds/voices/guards/guard noise 2.ogg" id="6_6ujad"]
+[ext_resource type="AudioStream" uid="uid://bkebiw4rkepei" path="res://assets/sounds/voices/guards/guard hey 1.ogg" id="4_h0owq"]
+[ext_resource type="AudioStream" uid="uid://c4qdh3qx2tk66" path="res://assets/sounds/voices/guards/guard laugh 1.ogg" id="5_jlpub"]
+[ext_resource type="AudioStream" uid="uid://dtyr06y55btn3" path="res://assets/sounds/voices/guards/guard noise 2.ogg" id="6_6ujad"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bj5rf"]
 height = 3.0
