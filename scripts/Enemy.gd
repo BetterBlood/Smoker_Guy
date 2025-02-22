@@ -8,6 +8,7 @@ var player_id: int
 var chase_player:= false
 var alerted := false
 var target: Vector3
+var game_ended:= false
 @onready var patrol_points := $PatrolPoints.get_children()
 var current_patrol_index := 0
 
@@ -16,6 +17,7 @@ var current_patrol_index := 0
 @onready var catch_player_1: AudioStreamPlayer3D = $Audios/CatchPlayer/CatchPlayer1
 @onready var reach_patrol_point: AudioStreamPlayer3D = $Audios/ReachPatrolPoint/ReachPatrolPoint
 
+signal player_catched
 
 func _ready():
 	if patrol_points.size() > 0:
@@ -58,7 +60,9 @@ func _physics_process(delta):
 		
 		if position.distance_to(target) < 1.0:
 			alerted = can_see_player()
-			if alerted:
+			if alerted and not game_ended:
+				game_ended = true
+				player_catched.emit()
 				print("TODO catch the player if close to him (GAME OVER)")
 			
 			update_patrol_target()

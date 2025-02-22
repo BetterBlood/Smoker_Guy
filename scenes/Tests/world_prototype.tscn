@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqlqvdo4vcb3p"]
+[gd_scene load_steps=17 format=3 uid="uid://bqlqvdo4vcb3p"]
 
 [ext_resource type="PackedScene" uid="uid://dibnc4tp1fkvx" path="res://scenes/Tests/test_floor.tscn" id="1_8exqp"]
 [ext_resource type="Script" path="res://scripts/Tests/world_prototype.gd" id="1_wahwy"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c7whgqwiiu1e1" path="res://scenes/Interactions/interaction_static.tscn" id="9_64imp"]
 [ext_resource type="PackedScene" uid="uid://bpf83ehfyblos" path="res://scenes/Interactions/chocolate.tscn" id="11_ldcuy"]
 [ext_resource type="PackedScene" uid="uid://0kpij3puv3f3" path="res://scenes/UI/ui.tscn" id="12_3ngbj"]
+[ext_resource type="PackedScene" uid="uid://cygop0uwuc6k" path="res://scenes/UI/transitions.tscn" id="13_bccbq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_py0p5"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -30,6 +31,11 @@ script = ExtResource("1_wahwy")
 chocolate_number_to_win = 4
 
 [node name="UI" parent="." instance=ExtResource("12_3ngbj")]
+
+[node name="Options" parent="." instance=ExtResource("7_mtnrq")]
+
+[node name="Transitions" parent="." instance=ExtResource("13_bccbq")]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("3_bry32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.769, 2.81193, 12.8654)
@@ -150,8 +156,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 24.5)
 [node name="TestWall6" parent="Prison" instance=ExtResource("4_idu0w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4994, -8.82214, 0)
 
-[node name="Options" parent="." instance=ExtResource("7_mtnrq")]
-
 [node name="GuardDistractionToEscapePrisonExample" type="Node" parent="."]
 
 [node name="InteractionStatic" parent="GuardDistractionToEscapePrisonExample" node_paths=PackedStringArray("soundSource", "world") instance=ExtResource("9_64imp")]
@@ -234,4 +238,8 @@ player = NodePath("../../Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25706, 0, 5.66434)
 player = NodePath("../../Player")
 
+[connection signal="transitionned" from="Transitions" to="." method="_on_transitions_transitionned"]
 [connection signal="chocolate_colected_signal" from="Player" to="." method="_on_player_chocolate_colected_signal"]
+[connection signal="player_catched" from="Enemy3" to="." method="_player_catched"]
+[connection signal="player_catched" from="Enemy4" to="." method="_player_catched"]
+[connection signal="player_catched" from="Enemy5" to="." method="_player_catched"]
