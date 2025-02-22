@@ -61,6 +61,66 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5859, 0, -24.6332)
 [node name="A4" type="Node3D" parent="Enemy2/PatrolPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.759, 0, -24.6332)
 
+[node name="Enemy3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_jc17c")]
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 25.404, 1.88818, -31.9807)
+player = NodePath("../Player")
+
+[node name="PatrolPoints" type="Node" parent="Enemy3"]
+
+[node name="A2" type="Node3D" parent="Enemy3/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5859, 0, -44.153)
+
+[node name="A3" type="Node3D" parent="Enemy3/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5859, 0, -24.6332)
+
+[node name="A4" type="Node3D" parent="Enemy3/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.759, 0, -24.6332)
+
+[node name="Enemy4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_jc17c")]
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 50.2667, 1.88818, -6.4865)
+player = NodePath("../Player")
+
+[node name="PatrolPoints" type="Node" parent="Enemy4"]
+
+[node name="A2" type="Node3D" parent="Enemy4/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.7941, 0, 8.38816)
+
+[node name="A3" type="Node3D" parent="Enemy4/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.8579, -3.8147e-06, 2.93321)
+
+[node name="A4" type="Node3D" parent="Enemy4/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.5284, 0, -13.9088)
+
+[node name="Enemy5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_jc17c")]
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 83.8161, 1.88818, -6.4865)
+player = NodePath("../Player")
+
+[node name="PatrolPoints" type="Node" parent="Enemy5"]
+
+[node name="A2" type="Node3D" parent="Enemy5/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.1637, -24.6292, 6.83036)
+
+[node name="A3" type="Node3D" parent="Enemy5/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.2703, -20.2251, 7.13927)
+
+[node name="A4" type="Node3D" parent="Enemy5/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.5302, 0, -18.7123)
+
+[node name="Enemy6" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_jc17c")]
+transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 113.158, 1.88818, -1.93603)
+player = NodePath("../Player")
+
+[node name="PatrolPoints" type="Node" parent="Enemy6"]
+
+[node name="A2" type="Node3D" parent="Enemy6/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.195, -24.6292, -0.905094)
+
+[node name="A3" type="Node3D" parent="Enemy6/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.196, -20.2251, 7.80031)
+
+[node name="A4" type="Node3D" parent="Enemy6/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.731, 0, -17.3901)
+
 [node name="Options" parent="." instance=ExtResource("5_vvcs6")]
 process_mode = 3
 
