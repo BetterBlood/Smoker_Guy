@@ -1,7 +1,8 @@
-[gd_scene load_steps=256 format=3 uid="uid://dbrgm6aejrjjt"]
+[gd_scene load_steps=259 format=3 uid="uid://dbrgm6aejrjjt"]
 
-[ext_resource type="PackedScene" uid="uid://bkrap3qqnsxru" path="res://maps/all_levels.glb" id="1_ns7wq"]
+[ext_resource type="PackedScene" uid="uid://dsihiligwquc1" path="res://maps/all_levels.glb" id="1_ns7wq"]
 [ext_resource type="PackedScene" uid="uid://b5dpenco0nwh" path="res://scenes/player.tscn" id="2_6egss"]
+[ext_resource type="PackedScene" uid="uid://bo76gvkuloqpo" path="res://scenes/Tests/chocolate.glb" id="3_4pbfa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mdxox"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -14,6 +15,8 @@ sky_material = SubResource("ProceduralSkyMaterial_mdxox")
 background_mode = 2
 sky = SubResource("Sky_xy0hn")
 tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vnkgo"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_aeuxi"]
 data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
@@ -765,6 +768,9 @@ data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1,
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j61wv"]
 data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_nsppf"]
+size = Vector3(100, 1, 100)
+
 [node name="TestImport" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -778,6 +784,15 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13704, 0)
 
 [node name="all_levels" parent="." instance=ExtResource("1_ns7wq")]
+
+[node name="Crate_002" parent="all_levels" index="2"]
+transform = Transform3D(0.422217, 0, -0.402541, 0, 0.583358, 0, 0.402541, 0, 0.422217, -0.545944, 0.724883, -3.50134)
+
+[node name="PhysCrate" type="RigidBody3D" parent="all_levels"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="all_levels/PhysCrate"]
+transform = Transform3D(0.422217, 0, -0.402541, 0, 0.583358, 0, 0.402541, 0, 0.422217, -0.545944, 0.724883, -3.50134)
+shape = SubResource("BoxShape3D_vnkgo")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="all_levels/Crate_004" index="0"]
 
@@ -2028,5 +2043,17 @@ shape = SubResource("ConcavePolygonShape3D_a05yt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="all_levels/Crate_253/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_j61wv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="all_levels/floor" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="all_levels/floor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_nsppf")
+
+[node name="chocolate2" parent="all_levels" instance=ExtResource("3_4pbfa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77593, 0.727347, -1.23447)
+
+[node name="chocolate3" parent="all_levels" instance=ExtResource("3_4pbfa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.762, 0.070763, 48.9271)
 
 [editable path="all_levels"]
