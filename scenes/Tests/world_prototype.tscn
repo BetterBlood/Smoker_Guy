@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqlqvdo4vcb3p"]
+[gd_scene load_steps=16 format=3 uid="uid://bqlqvdo4vcb3p"]
 
 [ext_resource type="PackedScene" uid="uid://dibnc4tp1fkvx" path="res://scenes/Tests/test_floor.tscn" id="1_8exqp"]
 [ext_resource type="Script" path="res://scripts/Tests/world_prototype.gd" id="1_wahwy"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bka3q3ssyynh4" path="res://scenes/Interactions/bottle.tscn" id="8_123fh"]
 [ext_resource type="PackedScene" uid="uid://c7whgqwiiu1e1" path="res://scenes/Interactions/interaction_static.tscn" id="9_64imp"]
 [ext_resource type="PackedScene" uid="uid://bpf83ehfyblos" path="res://scenes/Interactions/chocolate.tscn" id="11_ldcuy"]
+[ext_resource type="PackedScene" uid="uid://0kpij3puv3f3" path="res://scenes/UI/ui.tscn" id="12_3ngbj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_py0p5"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -27,6 +28,8 @@ tonemap_mode = 2
 [node name="WorldPrototype" type="Node3D"]
 script = ExtResource("1_wahwy")
 chocolate_number_to_win = 4
+
+[node name="UI" parent="." instance=ExtResource("12_3ngbj")]
 
 [node name="Player" parent="." instance=ExtResource("3_bry32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.769, 2.81193, 12.8654)
