@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_654p1"]
 [ext_resource type="PackedScene" uid="uid://b5dpenco0nwh" path="res://scenes/player.tscn" id="1_sa3da"]
 [ext_resource type="PackedScene" uid="uid://b3utv1asyo0gj" path="res://scenes/enemy.tscn" id="2_jc17c"]
-[ext_resource type="PackedScene" uid="uid://bpc6r56fi3w8a" path="res://scenes/remade-level.tscn" id="5_3eoat"]
+[ext_resource type="PackedScene" path="res://scenes/remade-level.tscn" id="5_3eoat"]
 [ext_resource type="PackedScene" uid="uid://sds64ovbu4" path="res://scenes/options.tscn" id="5_vvcs6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mnmpc"]
