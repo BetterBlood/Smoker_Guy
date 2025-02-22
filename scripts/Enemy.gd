@@ -53,9 +53,9 @@ func _physics_process(delta):
 		if position.distance_to(target) < 1.0:
 			update_patrol_target()
 	else:
-		#target = Vector3(player.position.x, position.y, player.position.z)
 		if chase_player:
-			target = player.position
+			#target = player.position
+			target = Vector3(player.position.x, position.y, player.position.z)
 		#look_at(target, Vector3.UP)
 		
 		if position.distance_to(target) < 1.0:
@@ -78,9 +78,8 @@ func can_see_player() -> bool:
 			 # Check by comparing against the player’s group or name
 			if collider and collider.is_in_group("Player"):
 				set_alerted()
-				chase_player = true
-				if $VisionCone != null:
-					$VisionCone.queue_free()
+				#chase_player = true
+				start_chase_player()
 				return true
 	return false
 
@@ -102,8 +101,10 @@ func _on_sound_receiver_sound_detected(other_position: Vector3) -> void:
 			alerted = true
 			set_alerted()
 			if not result.is_empty() and result["collider_id"] == player_id:
-				target = player.position
-				chase_player = true
+				#target = player.position
+				target = Vector3(player.position.x, position.y, player.position.z)
+				#chase_player = true
+				start_chase_player()
 			else:
 				target = other_position
 
@@ -113,5 +114,14 @@ func is_grounded() -> bool:
 func has_been_hit_by_player():
 	alerted = true
 	set_alerted()
-	target = player.position
+	#target = player.position
+	target = Vector3(player.position.x, position.y, player.position.z)
+	#chase_player = true
+	start_chase_player()
+
+func start_chase_player():
 	chase_player = true
+	$VisionCone.hide()
+	await get_tree().create_timer(3.0).timeout
+	chase_player = false
+	$VisionCone.show()
