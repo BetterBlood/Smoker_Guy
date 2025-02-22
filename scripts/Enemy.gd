@@ -92,7 +92,7 @@ func _on_sound_receiver_sound_detected(other_position: Vector3) -> void:
 	var result = space_state.intersect_ray(query)
 	#print(result)
 	#print("sound detected at: ", ear.global_position, ", from: ", other_position)
-	if not result.is_empty() and result["collider"] in [StaticBody3D, CSGBox3D]:
+	if not result.is_empty() and (result["collider"] is StaticBody3D or result["collider"] is CSGBox3D):
 		#print(result)
 		print("obstructed -> ignored") # TODO: verify all obstruction mat are working
 	else:
