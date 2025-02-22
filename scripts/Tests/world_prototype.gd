@@ -11,7 +11,6 @@ func _ready() -> void:
 func _on_player_chocolate_colected_signal(number: int) -> void:
 	if number >= chocolate_number_to_win:
 		$Transitions.begin_transition(0)
-		print("TODO : WIIIIIIIIN -> victory scene ?, return to main menu ?")
 	else:
 		$UI.update_chocolate_collected(number)
 		print("TODO : update number of guards or speed ? chocolate: ", number, "/", chocolate_number_to_win)
@@ -20,10 +19,10 @@ func _on_player_chocolate_colected_signal(number: int) -> void:
 func _on_transitions_transitionned(value: int) -> void:
 	if value == 0: # WIN !
 		$YouWin.show()
-		print("YOU WIN") #TODO Display victory
+		print("YOU WIN")
 	elif value == 1: #Loose
 		$GameOver.show()
-		print("GAME OVER")#TODO Display loose
+		print("GAME OVER")
 	elif value == 2: # return to main menu
 		$YouWin.hide()
 		$GameOver.hide()

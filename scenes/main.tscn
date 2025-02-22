@@ -1,10 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvmxwqk61tto4"]
+[gd_scene load_steps=14 format=3 uid="uid://cvmxwqk61tto4"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_654p1"]
 [ext_resource type="PackedScene" uid="uid://b5dpenco0nwh" path="res://scenes/player.tscn" id="1_sa3da"]
 [ext_resource type="PackedScene" uid="uid://b3utv1asyo0gj" path="res://scenes/enemy.tscn" id="2_jc17c"]
+[ext_resource type="PackedScene" uid="uid://0kpij3puv3f3" path="res://scenes/UI/ui.tscn" id="2_lw3ai"]
+[ext_resource type="PackedScene" uid="uid://cygop0uwuc6k" path="res://scenes/UI/transitions.tscn" id="4_ly7l8"]
 [ext_resource type="PackedScene" uid="uid://bpc6r56fi3w8a" path="res://scenes/remade-level.tscn" id="5_3eoat"]
+[ext_resource type="PackedScene" uid="uid://3ohbgjdjvlan" path="res://scenes/UI/you_win.tscn" id="5_cih3k"]
 [ext_resource type="PackedScene" uid="uid://sds64ovbu4" path="res://scenes/options.tscn" id="5_vvcs6"]
+[ext_resource type="PackedScene" uid="uid://uynwnx0yd5cv" path="res://scenes/UI/game_over.tscn" id="6_t8bde"]
+[ext_resource type="PackedScene" uid="uid://bpf83ehfyblos" path="res://scenes/Interactions/chocolate.tscn" id="10_iv8qt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mnmpc"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -20,6 +25,21 @@ tonemap_mode = 2
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_654p1")
+chocolate_number_to_win = 2
+
+[node name="UI" parent="." instance=ExtResource("2_lw3ai")]
+
+[node name="Options" parent="." instance=ExtResource("5_vvcs6")]
+process_mode = 3
+
+[node name="Transitions" parent="." instance=ExtResource("4_ly7l8")]
+visible = false
+
+[node name="YouWin" parent="." instance=ExtResource("5_cih3k")]
+visible = false
+
+[node name="GameOver" parent="." instance=ExtResource("6_t8bde")]
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hdhwh")
@@ -33,9 +53,6 @@ directional_shadow_mode = 0
 
 [node name="Player" parent="." instance=ExtResource("1_sa3da")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5319, 1.2241, -14.7509)
-
-[node name="Options" parent="." instance=ExtResource("5_vvcs6")]
-process_mode = 3
 
 [node name="all levels" parent="." instance=ExtResource("5_3eoat")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25357, 0, -4.75372)
@@ -111,3 +128,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.196, -20.2251, 7.80031)
 
 [node name="A4" type="Node3D" parent="Enemy5/PatrolPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.731, 0, -17.3901)
+
+[node name="WiningCondition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.769, 2.81193, 12.8654)
+
+[node name="chocolate" parent="WiningCondition" node_paths=PackedStringArray("player") instance=ExtResource("10_iv8qt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74408, -1.41949, -56.2087)
+player = NodePath("../../Player")
+
+[node name="chocolate2" parent="WiningCondition" node_paths=PackedStringArray("player") instance=ExtResource("10_iv8qt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.154, 0, -30.5034)
+player = NodePath("../../Player")
+
+[connection signal="transition_finished" from="Transitions" to="." method="_on_transitions_transition_finished"]
+[connection signal="transitionned" from="Transitions" to="." method="_on_transitions_transitionned"]
+[connection signal="chocolate_colected_signal" from="Player" to="." method="_on_player_chocolate_colected_signal"]
+[connection signal="player_catched" from="Enemy" to="." method="_player_catched"]
+[connection signal="player_catched" from="Enemy2" to="." method="_player_catched"]
+[connection signal="player_catched" from="Enemy3" to="." method="_player_catched"]
+[connection signal="player_catched" from="Enemy4" to="." method="_player_catched"]
+[connection signal="player_catched" from="Enemy5" to="." method="_player_catched"]
