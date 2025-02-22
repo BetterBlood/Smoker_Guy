@@ -37,7 +37,11 @@ func _process(delta: float) -> void:
 	handle_throw()
 	
 func is_grounded() -> bool:
-	return $GroundDetector.is_colliding()
+	var groundDetected = $GroundDetectors/GroundDetector.is_colliding()
+	groundDetected = groundDetected or $GroundDetectors/GroundDetector2.is_colliding()
+	groundDetected = groundDetected or $GroundDetectors/GroundDetector3.is_colliding()
+	groundDetected = groundDetected or $GroundDetectors/GroundDetector4.is_colliding()
+	return groundDetected
 	
 func handle_move(delta: float):
 	var input := Vector3.ZERO
@@ -60,7 +64,7 @@ func handle_move(delta: float):
 	
 	var raw_force = twist_pivot.basis * input * 1200.0 * delta
 	if is_grounded():
-		var ground_normal = $GroundDetector.get_collision_normal()
+		var ground_normal = _get_ground_normal()
 		var slide_force = raw_force.slide(ground_normal)
 		var ramp_bias = clamp(1.0 - ground_normal.dot(Vector3.UP), 0, 1)
 		var upward_bias = Vector3.UP * ramp_bias * 2000.0 * delta
@@ -98,6 +102,17 @@ func handle_look():
 	pitch_input = 0.0
 
 
+func _get_ground_normal() -> Vector3:
+	if $GroundDetectors/GroundDetector.is_colliding():
+		return $GroundDetectors/GroundDetector.get_collision_normal()
+	elif $GroundDetectors/GroundDetector2.is_colliding():
+		return $GroundDetectors/GroundDetector2.get_collision_normal()
+	elif $GroundDetectors/GroundDetector3.is_colliding():
+		return $GroundDetectors/GroundDetector3.get_collision_normal()
+	elif $GroundDetectors/GroundDetector4.is_colliding():
+		return $GroundDetectors/GroundDetector4.get_collision_normal()
+	else:
+		return Vector3.UP
 
 #func _on_area_3d_area_entered(area: Area3D) -> void:
 	#if area.is_in_group("floor"):

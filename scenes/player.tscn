@@ -76,8 +76,23 @@ cast_shadow = 3
 gi_mode = 0
 mesh = SubResource("CylinderMesh_tcg3x")
 
-[node name="GroundDetector" type="RayCast3D" parent="."]
+[node name="GroundDetectors" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.286408, 0)
+
+[node name="GroundDetector" type="RayCast3D" parent="GroundDetectors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0.1)
+target_position = Vector3(0, -0.1, 0)
+
+[node name="GroundDetector2" type="RayCast3D" parent="GroundDetectors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, -0.1)
+target_position = Vector3(0, -0.1, 0)
+
+[node name="GroundDetector3" type="RayCast3D" parent="GroundDetectors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, -0.1)
+target_position = Vector3(0, -0.1, 0)
+
+[node name="GroundDetector4" type="RayCast3D" parent="GroundDetectors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0.1)
 target_position = Vector3(0, -0.1, 0)
 
 [node name="Audios" type="Node3D" parent="."]
