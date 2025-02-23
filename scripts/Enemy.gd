@@ -48,9 +48,11 @@ func _physics_process(delta):
 	if angle_player_to_guard < PI/4:
 		$AnimatedSprite3D.play("backward")
 	elif angle_player_to_guard < 3*PI/4:
-		if not $AnimatedSprite3D.flip_h:#TODO need to know then it's right(not left)
-			print("set to true (left)")
+		if player_orientation.signed_angle_to(target - player.global_position, Vector3(1, 1, 1)) > 0:
 			$AnimatedSprite3D.flip_h = true
+		else:
+			$AnimatedSprite3D.flip_h = false
+			
 		$AnimatedSprite3D.play("right")
 	elif angle_player_to_guard < PI:
 		$AnimatedSprite3D.play("foreward")

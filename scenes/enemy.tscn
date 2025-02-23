@@ -8,7 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://d3tngfsdr08ov" path="res://assets/guard.png" id="7_26nf0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bj5rf"]
-height = 3.0
+radius = 0.663682
+height = 3.49138
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvdhn"]
 transparency = 1
@@ -167,6 +168,6 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.0193861, 2.05887, -0.
 billboard = 1
 double_sided = false
 sprite_frames = SubResource("SpriteFrames_25jso")
-animation = &"foreward"
+animation = &"backward"
 
 [connection signal="sound_detected" from="Ear/SoundReceiver" to="." method="_on_sound_receiver_sound_detected"]
