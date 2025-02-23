@@ -91,22 +91,22 @@ transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -7.45077
 [node name="B" type="Node3D" parent="Enemy4/PatrolPoints"]
 transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -4.91, 0.446729, 6.39831)
 
-[node name="Enemy5" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_u42wd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6064, 1.53209, 0)
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_u42wd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0552, 1.30168, 7.17547)
 player = NodePath("../Player")
 
-[node name="PatrolPoints" type="Node" parent="Enemy5"]
+[node name="PatrolPoints" type="Node" parent="Enemy"]
 
-[node name="A" type="Node3D" parent="Enemy5/PatrolPoints"]
+[node name="A" type="Node3D" parent="Enemy/PatrolPoints"]
 transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 28.4331, 1.79576, -12.8696)
 
-[node name="B" type="Node3D" parent="Enemy5/PatrolPoints"]
+[node name="B" type="Node3D" parent="Enemy/PatrolPoints"]
 transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 2.679, 0.650628, -11.7035)
 
-[node name="C" type="Node3D" parent="Enemy5/PatrolPoints"]
+[node name="C" type="Node3D" parent="Enemy/PatrolPoints"]
 transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, -0.0997639, 1.66481, 11.9012)
 
-[node name="D" type="Node3D" parent="Enemy5/PatrolPoints"]
+[node name="D" type="Node3D" parent="Enemy/PatrolPoints"]
 transform = Transform3D(0.703438, 0, 0, 0, 0.660562, 0, 0, 0, 0.742559, 28.9248, 2.79802, 10.2418)
 
 [node name="Prison" type="Node3D" parent="." groups=["Floor"]]
@@ -253,4 +253,4 @@ player = NodePath("../../Player")
 [connection signal="chocolate_colected_signal" from="Player" to="." method="_on_player_chocolate_colected_signal"]
 [connection signal="player_catched" from="Enemy3" to="." method="_player_catched"]
 [connection signal="player_catched" from="Enemy4" to="." method="_player_catched"]
-[connection signal="player_catched" from="Enemy5" to="." method="_player_catched"]
+[connection signal="player_catched" from="Enemy" to="." method="_player_catched"]

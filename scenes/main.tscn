@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://0kpij3puv3f3" path="res://scenes/UI/ui.tscn" id="2_lw3ai"]
 [ext_resource type="PackedScene" uid="uid://cygop0uwuc6k" path="res://scenes/UI/transitions.tscn" id="4_ly7l8"]
 [ext_resource type="PackedScene" uid="uid://bpc6r56fi3w8a" path="res://scenes/remade-level.tscn" id="5_3eoat"]
-[ext_resource type="PackedScene" path="res://scenes/UI/you_win.tscn" id="5_cih3k"]
+[ext_resource type="PackedScene" uid="uid://3ohbgjdjvlan" path="res://scenes/UI/you_win.tscn" id="5_cih3k"]
 [ext_resource type="PackedScene" uid="uid://sds64ovbu4" path="res://scenes/options.tscn" id="5_vvcs6"]
-[ext_resource type="PackedScene" path="res://scenes/UI/game_over.tscn" id="6_t8bde"]
+[ext_resource type="PackedScene" uid="uid://uynwnx0yd5cv" path="res://scenes/UI/game_over.tscn" id="6_t8bde"]
 [ext_resource type="PackedScene" uid="uid://bpf83ehfyblos" path="res://scenes/Interactions/chocolate.tscn" id="10_iv8qt"]
 [ext_resource type="PackedScene" uid="uid://bka3q3ssyynh4" path="res://scenes/Interactions/bottle.tscn" id="11_yoan7"]
 

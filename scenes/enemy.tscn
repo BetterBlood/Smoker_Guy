@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3utv1asyo0gj"]
+[gd_scene load_steps=13 format=3 uid="uid://b3utv1asyo0gj"]
 
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_y30oo"]
-[ext_resource type="Texture2D" uid="uid://bkyp2adksc6hs" path="res://assets/alert_guard.png" id="2_4h5hk"]
 [ext_resource type="PackedScene" uid="uid://52gbq5fabglk" path="res://scenes/sound_receiver.tscn" id="2_m7243"]
 [ext_resource type="AudioStream" uid="uid://bkebiw4rkepei" path="res://assets/sounds/voices/guards/guard hey 1.ogg" id="4_h0owq"]
 [ext_resource type="AudioStream" uid="uid://c4qdh3qx2tk66" path="res://assets/sounds/voices/guards/guard laugh 1.ogg" id="5_jlpub"]
 [ext_resource type="AudioStream" uid="uid://dtyr06y55btn3" path="res://assets/sounds/voices/guards/guard noise 2.ogg" id="6_6ujad"]
+[ext_resource type="Texture2D" uid="uid://d3tngfsdr08ov" path="res://assets/guard.png" id="7_26nf0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bj5rf"]
 height = 3.0
@@ -14,18 +14,42 @@ height = 3.0
 transparency = 1
 albedo_color = Color(0, 0, 0, 0.321569)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rxix1"]
-atlas = ExtResource("2_4h5hk")
-region = Rect2(0, 0, 395, 559)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv5th"]
+atlas = ExtResource("7_26nf0")
+region = Rect2(1136, 0, 568, 679)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_inu78"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndk0d"]
+atlas = ExtResource("7_26nf0")
+region = Rect2(568, 0, 568, 679)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lnay"]
+atlas = ExtResource("7_26nf0")
+region = Rect2(0, 0, 568, 679)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_25jso"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rxix1")
+"texture": SubResource("AtlasTexture_lv5th")
 }],
 "loop": true,
-"name": &"default",
+"name": &"backward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndk0d")
+}],
+"loop": true,
+"name": &"foreward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lnay")
+}],
+"loop": true,
+"name": &"right",
 "speed": 5.0
 }]
 
@@ -110,11 +134,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24539, 0)
 
 [node name="SoundReceiver" parent="Ear" instance=ExtResource("2_m7243")]
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.0193861, 2.05887, -0.0230917)
-billboard = 1
-sprite_frames = SubResource("SpriteFrames_inu78")
-
 [node name="Audios" type="Node3D" parent="."]
 transform = Transform3D(1.42159, 0, 0, 0, 1.51386, 0, 0, 0, 1.34669, 0, 0, 0)
 
@@ -142,5 +161,12 @@ bus = &"Voice"
 [node name="GroundDetector" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0282525, 0)
 target_position = Vector3(0, -0.1, 0)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.0193861, 2.05887, -0.0230917)
+billboard = 1
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_25jso")
+animation = &"foreward"
 
 [connection signal="sound_detected" from="Ear/SoundReceiver" to="." method="_on_sound_receiver_sound_detected"]

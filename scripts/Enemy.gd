@@ -39,8 +39,21 @@ func update_patrol_target():
 
 func _physics_process(delta):
 	# Calculate the direction vector from the enemy to the target
-	var direction_3d = target - position
+	var direction_3d = target - global_position
 	var direction = Vector3(direction_3d.x, 0, direction_3d.z).normalized()
+	
+	var player_orientation = global_position - player.global_position
+	var angle_player_to_guard = direction.angle_to(player_orientation)
+	
+	if angle_player_to_guard < PI/4:
+		$AnimatedSprite3D.play("backward")
+	elif angle_player_to_guard < 3*PI/4:
+		if not $AnimatedSprite3D.flip_h:#TODO need to know then it's right(not left)
+			print("set to true (left)")
+			$AnimatedSprite3D.flip_h = true
+		$AnimatedSprite3D.play("right")
+	elif angle_player_to_guard < PI:
+		$AnimatedSprite3D.play("foreward")
 	#$Body.look_at(player.global_transform.origin, Vector3.UP)
 	if not is_grounded():
 		direction += get_gravity()
