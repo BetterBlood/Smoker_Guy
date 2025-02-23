@@ -37,9 +37,9 @@ func _player_catched() -> void:
 
 
 func _on_transitions_transition_finished(value: int) -> void:
-	if value == 0 or value == 1:
-		for child in $WiningCondition.get_children():
+	for child in $WiningCondition.get_children():
 			child.rotation_tween.kill()
+	if value == 0 or value == 1:
 		$Transitions.begin_transition(2)
 	elif value == 2:
 		pass

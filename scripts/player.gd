@@ -51,6 +51,18 @@ func handle_move(delta: float):
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_back")
 	
+
+	if input.z > 0:
+		$AnimatedSprite3D.play("forewark")
+	elif input.z < 0:
+		$AnimatedSprite3D.play("backward")
+	if input.x > 0:
+		$AnimatedSprite3D.flip_h = false
+		$AnimatedSprite3D.play("right")
+	elif input.x < 0:
+		$AnimatedSprite3D.flip_h = true
+		$AnimatedSprite3D.play("right")
+	
 	val += delta
 	if val > 0.5 && not input.is_zero_approx():
 		#if crouching:
