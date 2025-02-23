@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://uynwnx0yd5cv"]
+[gd_scene load_steps=2 format=3 uid="uid://uynwnx0yd5cv"]
+
+[ext_resource type="Texture2D" uid="uid://dsmq5cxh2j2le" path="res://assets/loose.PNG" id="1_sbqmg"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -16,6 +18,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Loose" type="Sprite2D" parent="ColorRect"]
+position = Vector2(660, 342)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_sbqmg")
 
 [node name="PanelContainer" type="PanelContainer" parent="ColorRect"]
 layout_mode = 1
