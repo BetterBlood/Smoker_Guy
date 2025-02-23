@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://0kpij3puv3f3" path="res://scenes/UI/ui.tscn" id="2_lw3ai"]
 [ext_resource type="PackedScene" uid="uid://cygop0uwuc6k" path="res://scenes/UI/transitions.tscn" id="4_ly7l8"]
 [ext_resource type="PackedScene" uid="uid://bpc6r56fi3w8a" path="res://scenes/remade-level.tscn" id="5_3eoat"]
-[ext_resource type="PackedScene" uid="uid://3ohbgjdjvlan" path="res://scenes/UI/you_win.tscn" id="5_cih3k"]
+[ext_resource type="PackedScene" path="res://scenes/UI/you_win.tscn" id="5_cih3k"]
 [ext_resource type="PackedScene" uid="uid://sds64ovbu4" path="res://scenes/options.tscn" id="5_vvcs6"]
-[ext_resource type="PackedScene" uid="uid://uynwnx0yd5cv" path="res://scenes/UI/game_over.tscn" id="6_t8bde"]
+[ext_resource type="PackedScene" path="res://scenes/UI/game_over.tscn" id="6_t8bde"]
 [ext_resource type="PackedScene" uid="uid://bpf83ehfyblos" path="res://scenes/Interactions/chocolate.tscn" id="10_iv8qt"]
 [ext_resource type="PackedScene" uid="uid://bka3q3ssyynh4" path="res://scenes/Interactions/bottle.tscn" id="11_yoan7"]
 
@@ -149,11 +149,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.65815, 0, -25.671)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.769, 2.81193, 12.8654)
 
 [node name="chocolate" parent="WiningCondition" node_paths=PackedStringArray("player") instance=ExtResource("10_iv8qt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74408, -1.41949, -56.2087)
+transform = Transform3D(0.149976, 0.0022238, 0.00148243, -0.0020028, 0.148606, -0.0203033, -0.00176966, 0.0202803, 0.148612, 12.2709, -1.05376, -61.0696)
 player = NodePath("../../Player")
 
 [node name="chocolate2" parent="WiningCondition" node_paths=PackedStringArray("player") instance=ExtResource("10_iv8qt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.126, -1.20866, -30.5034)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -13.5499, -1.13652, -7.93378)
+player = NodePath("../../Player")
+
+[node name="chocolate3" parent="WiningCondition" node_paths=PackedStringArray("player") instance=ExtResource("10_iv8qt")]
+transform = Transform3D(0.148599, -0.0204559, 0, 0.0204208, 0.148344, -0.00877574, 0.00119677, 0.00869375, 0.149743, 140.268, -0.210334, -17.0086)
 player = NodePath("../../Player")
 
 [node name="Bottle" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_yoan7")]
