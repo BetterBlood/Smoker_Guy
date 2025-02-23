@@ -13,14 +13,17 @@
 [ext_resource type="PackedScene" uid="uid://bka3q3ssyynh4" path="res://scenes/Interactions/bottle.tscn" id="11_yoan7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mnmpc"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_top_color = Color(0.582005, 0.438072, 0.300976, 1)
+sky_horizon_color = Color(0.990192, 0.523759, 0.47578, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_energy_multiplier = 0.5
 
 [sub_resource type="Sky" id="Sky_eajfc"]
 sky_material = SubResource("ProceduralSkyMaterial_mnmpc")
 
 [sub_resource type="Environment" id="Environment_hdhwh"]
 background_mode = 2
+background_energy_multiplier = 0.5
 sky = SubResource("Sky_eajfc")
 tonemap_mode = 2
 
@@ -46,7 +49,7 @@ environment = SubResource("Environment_hdhwh")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.173758, -0.982412, -0.0683767, -0.0241632, -0.0651589, 0.997582, -0.984492, 0.17499, -0.0124163, -10.5655, 6.4, -6.1)
-light_color = Color(0.912836, 0.917934, 0.917935, 1)
+light_color = Color(0.703756, 0.393695, 0.291668, 1)
 shadow_enabled = true
 shadow_opacity = 0.61
 directional_shadow_mode = 0
@@ -144,6 +147,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7775, 0, -26.1887)
 [node name="A4" type="Node3D" parent="Enemy6/PatrolPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.65815, 0, -25.671)
 
+[node name="Enemy7" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_jc17c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 145.352, 0, -10.6976)
+player = NodePath("../Player")
+
+[node name="PatrolPoints" type="Node" parent="Enemy7"]
+
+[node name="A2" type="Node3D" parent="Enemy7/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.773, 2.72389, -0.905094)
+
+[node name="A3" type="Node3D" parent="Enemy7/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.472, 2.43635, 7.80031)
+
+[node name="A4" type="Node3D" parent="Enemy7/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.834, 0, -17.3901)
+
+[node name="Enemy8" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_jc17c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.609, 0, 0)
+player = NodePath("../Player")
+
+[node name="PatrolPoints" type="Node" parent="Enemy8"]
+
+[node name="A2" type="Node3D" parent="Enemy8/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.773, 2.72389, 6.16022)
+
+[node name="A3" type="Node3D" parent="Enemy8/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.304, 2.43635, 7.80031)
+
+[node name="A4" type="Node3D" parent="Enemy8/PatrolPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148.536, 0, -8.11313)
+
 [node name="WiningCondition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.769, 2.81193, 12.8654)
 
@@ -176,3 +209,5 @@ player = NodePath("../Player")
 [connection signal="player_catched" from="Enemy4" to="." method="_player_catched"]
 [connection signal="player_catched" from="Enemy5" to="." method="_player_catched"]
 [connection signal="player_catched" from="Enemy6" to="." method="_player_catched"]
+[connection signal="player_catched" from="Enemy7" to="." method="_player_catched"]
+[connection signal="player_catched" from="Enemy8" to="." method="_player_catched"]
