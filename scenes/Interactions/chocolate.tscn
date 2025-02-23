@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b6bkqjtbsmj8k" path="res://scenes/Interactions/interactions_detector.tscn" id="3_7cqyi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ueyd4"]
-radius = 2.0
+radius = 12.0
 
 [node name="chocolate" instance=ExtResource("1_5s74n")]
 script = ExtResource("2_d46an")

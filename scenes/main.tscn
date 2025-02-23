@@ -26,7 +26,6 @@ tonemap_mode = 2
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_654p1")
-chocolate_number_to_win = 2
 
 [node name="UI" parent="." instance=ExtResource("2_lw3ai")]
 

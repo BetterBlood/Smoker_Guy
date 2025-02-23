@@ -1,10 +1,11 @@
 extends Node3D
 @onready var options: OptionsMenu = $Options
-@export var chocolate_number_to_win:= 1
+var chocolate_number_to_win:= 1
 
 func _ready() -> void:
 	options.hide()
 	options.is_open = false
+	chocolate_number_to_win = $WiningCondition.get_children().size()
 	$UI.set_max_chocolate(chocolate_number_to_win)
 
 
