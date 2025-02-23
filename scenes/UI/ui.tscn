@@ -53,7 +53,7 @@ text = "Chocolate collected: "
 [node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Labels"]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "Chocolate remaining: "
+text = "Remaining chocolate: "
 
 [node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

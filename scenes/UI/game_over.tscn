@@ -20,8 +20,8 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Loose" type="Sprite2D" parent="ColorRect"]
-position = Vector2(660, 342)
-scale = Vector2(0.5, 0.5)
+position = Vector2(591, 321)
+scale = Vector2(0.403395, 0.403395)
 texture = ExtResource("1_sbqmg")
 
 [node name="PanelContainer" type="PanelContainer" parent="ColorRect"]

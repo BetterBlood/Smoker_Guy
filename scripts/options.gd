@@ -19,11 +19,13 @@ func _on_back_pressed() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if not is_open:
+			$Panel/VBoxContainer/close.show()
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			is_open = true
 			options.show()
 			get_tree().paused = true
 		else:
+			$Panel/VBoxContainer/close.hide()
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			is_open = false
 			options.hide()
@@ -67,3 +69,11 @@ func _on_sfx_drag_ended(value_changed: bool) -> void:
 func _on_voice_drag_ended(value_changed: bool) -> void:
 	if value_changed:
 		ConfigFileHandler.save_audio_volum("Voice", $Panel/VBoxContainer/Voice.value)
+
+
+func _on_close_pressed() -> void:
+	$Panel/VBoxContainer/close.hide()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	is_open = false
+	options.hide()
+	get_tree().paused = false
