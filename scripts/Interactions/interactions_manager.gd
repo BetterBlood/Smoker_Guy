@@ -18,6 +18,8 @@ func unregisterArea(area: InteractionsDetector):
 		activeAreas.remove_at(index)
 
 func _process(_delta: float) -> void:
+	for area in activeAreas:
+		area.get_parent()._rem_out_line()
 	if canInteract:
 		if activeAreas.size() == 0 :
 			label.hide()
