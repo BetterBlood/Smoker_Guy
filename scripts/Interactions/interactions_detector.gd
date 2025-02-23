@@ -7,6 +7,13 @@ class_name InteractionsDetector
 var interact: Callable = func():
 	pass
 
+var out_line: Callable = func():
+	pass
+
+var rem_out_line: Callable = func():
+	pass
+
+
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		InteractionsManager.registerArea(self)

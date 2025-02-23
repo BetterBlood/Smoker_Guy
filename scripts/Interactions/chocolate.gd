@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var interactionDetector:= $InteractionsDetector
+const OUTLINE = preload("res://mat/outline.tres")
 
 @export var interactionToDisplay: String = "collect"
 @export var player: Player
@@ -14,6 +15,8 @@ var rotation_tween = null
 
 func _ready() -> void:
 	interactionDetector.interact = Callable(self, "_action_on_interact")
+	interactionDetector.out_line = Callable(self, "_out_line")
+	interactionDetector.rem_out_line = Callable(self, "_rem_out_line")
 	if !interactionToDisplay.is_empty():
 		interactionDetector.actionName = interactionToDisplay
 	
@@ -25,3 +28,10 @@ func _action_on_interact() -> void:
 		rotation_tween.kill()
 		player.collect_chocolate()
 		queue_free()
+
+
+func _out_line() -> void:
+	$chocolate.material_overlay = OUTLINE
+
+func _rem_out_line() -> void:
+	$chocolate.material_overlay = null

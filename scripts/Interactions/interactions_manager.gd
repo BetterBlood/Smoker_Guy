@@ -12,6 +12,7 @@ func registerArea(area: InteractionsDetector):
 	activeAreas.push_back(area)
 
 func unregisterArea(area: InteractionsDetector):
+	area.get_parent()._rem_out_line()
 	var index = activeAreas.find(area)
 	if index != -1:
 		activeAreas.remove_at(index)
@@ -25,6 +26,7 @@ func _process(_delta: float) -> void:
 				activeAreas.sort_custom(_sortByDistToPlayer)
 			var currArea: InteractionsDetector = activeAreas[0]
 			_setActiveLabel(currArea)
+			currArea.get_parent()._out_line()
 			label.show()
 	else:
 		label.hide()

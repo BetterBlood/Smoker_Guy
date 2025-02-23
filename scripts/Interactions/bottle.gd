@@ -10,9 +10,11 @@ var is_thown:= false
 
 var world:Node3D = null
 const sound_emitter = preload("res://scenes/sound_emitter.tscn")
-
+const OUTLINE = preload("res://mat/outline.tres")
 func _ready() -> void:
 	interactions_detector.interact = Callable(self, "_action_on_interact")
+	interactions_detector.out_line = Callable(self, "_out_line")
+	interactions_detector.rem_out_line = Callable(self, "_rem_out_line")
 	if !interactionToDisplay.is_empty():
 		interactions_detector.actionName = interactionToDisplay
 
@@ -29,6 +31,18 @@ func _action_on_interact() -> void:
 		world = player.world
 		$PushingBottle.play()
 
+
+func _out_line() -> void:
+	$MeshInstance3D.material_overlay = OUTLINE
+	$MeshInstance3D4.material_overlay = OUTLINE
+	$MeshInstance3D2.material_overlay = OUTLINE
+	$MeshInstance3D3.material_overlay = OUTLINE
+
+func _rem_out_line() -> void:
+	$MeshInstance3D.material_overlay = null
+	$MeshInstance3D4.material_overlay = null
+	$MeshInstance3D2.material_overlay = null
+	$MeshInstance3D3.material_overlay = null
 
 func _on_delete_time_timeout() -> void:
 	queue_free()
